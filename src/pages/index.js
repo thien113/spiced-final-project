@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Benefits from "../components/Benefits";
 import EmailForm from "../components/EmailForm";
 
 export default function Home() {
@@ -75,6 +76,7 @@ export default function Home() {
         </button>
       </div>
       <EmailForm onSubmit={handleAddEmailSubscriber} />
+      <Benefits />
     </>
   );
 }
