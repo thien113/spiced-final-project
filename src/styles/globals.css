@@ -53,6 +53,7 @@ nav > a:hover {
  Footer
 */
 footer {
+  text-align: right;
   margin: 50px;
 }
 
