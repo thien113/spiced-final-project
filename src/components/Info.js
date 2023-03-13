@@ -1,4 +1,4 @@
-export default function Map() {
+export default function Info() {
   return (
     <>
       <iframe
@@ -9,6 +9,12 @@ export default function Map() {
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
       ></iframe>
+      <div>
+        <h2>Crêpe Cone</h2>
+        <p>Mo-Sun: 11:00 - 20:00</p>
+        <p>Telephone: 01234567890</p>
+        <p>Ritterstraße 12-14, 10969 Berlin</p>
+      </div>
     </>
   );
 }

@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Benefits from "../components/Benefits";
 import EmailForm from "../components/EmailForm";
-import Map from "../components/Map";
+import Info from "../components/Info";
 
 export default function Home() {
   async function handleAddEmailSubscriber(event) {
@@ -78,7 +78,7 @@ export default function Home() {
       </div>
       <EmailForm onSubmit={handleAddEmailSubscriber} />
       <Benefits />
-      <Map />
+      <Info />
     </>
   );
 }
