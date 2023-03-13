@@ -6,8 +6,8 @@ export default function Header() {
     <header>
       <Image
         src="/images/crepe.svg"
-        height={50}
-        width={50}
+        height={150}
+        width={150}
         alt="crêpe cone log"
       />
       <nav>
