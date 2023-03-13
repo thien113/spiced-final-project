@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Benefits() {
   return (
     <>
-      <p>
+      <p className="landing-text">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
@@ -12,7 +12,7 @@ export default function Benefits() {
         nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
         sed diam voluptua.
       </p>
-      <ul>
+      <ul className="benefit">
         <div>
           <Image
             src="/images/com.svg"
@@ -20,11 +20,7 @@ export default function Benefits() {
             width={80}
             alt="crêpe cone log"
           />
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua.
-          </p>
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
         </div>
         <div>
           <Image
@@ -33,11 +29,7 @@ export default function Benefits() {
             width={80}
             alt="crêpe cone log"
           />
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua.
-          </p>
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
         </div>
         <div>
           <Image
@@ -46,11 +38,7 @@ export default function Benefits() {
             width={80}
             alt="crêpe cone log"
           />
-          <p>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
-            erat, sed diam voluptua.
-          </p>
+          <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
         </div>
       </ul>
     </>
