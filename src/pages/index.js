@@ -1,8 +1,28 @@
 import Head from "next/head";
 import Image from "next/image";
-import Button from "../components/Button";
+import EmailForm from "../components/EmailForm";
 
 export default function Home() {
+  async function handleAddEmailSubscriber(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const emailData = Object.fromEntries(formData);
+
+    const response = await fetch("/api/email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emailData),
+    });
+
+    if (response.ok) {
+      event.target.reset();
+    } else {
+      console.error(response.status);
+    }
+  }
   return (
     <>
       <Head>
@@ -16,7 +36,7 @@ export default function Home() {
         style={{
           height: "auto",
           position: "relative",
-          borderRadius: "50px;",
+          borderRadius: "50px",
           zIndex: 0,
         }}
       >
@@ -54,6 +74,7 @@ export default function Home() {
           Get delivery
         </button>
       </div>
+      <EmailForm onSubmit={handleAddEmailSubscriber} />
     </>
   );
 }
