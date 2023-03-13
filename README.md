@@ -43,7 +43,7 @@ so that I can decide beforehand what to order
 ### Acceptance Criteria
 
 - [ ] list all items by categories
-- [ ] categories should have a order
+- [ ] categories should listed in order
 
 ### Tasks
 
