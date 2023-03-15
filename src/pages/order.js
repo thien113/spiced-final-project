@@ -8,18 +8,31 @@ export default function Order() {
   const [products, setProducts] = useState(initialArray);
   const [cartActive, setCardActive] = useState(false);
   function addProductToCard(product) {
-    console.log("product:", product);
-    setProducts((oldArray) => [
-      ...oldArray,
-      {
-        name: product.name,
-        price: product.price,
-        extras: product.extras,
-        counter: 1,
-      },
-    ]);
+    if (products.some((p) => p.name === product.name)) {
+      const currentProduct = products.find((p) => p.name === product.name);
+      const updatedProduct = {
+        name: currentProduct.name,
+        counter: currentProduct.counter + 1,
+        price: currentProduct.price,
+      };
+      console.log("Updated Product:", updatedProduct);
+      const newProducts = [...products];
+      console.log("newProducts:", newProducts);
+      newProducts[currentProduct] = updatedProduct;
+      setProducts(newProducts);
+      console.log("new Products:", products);
+    } else {
+      setProducts((oldArray) => [
+        ...oldArray,
+        {
+          name: product.name,
+          price: product.price,
+          extras: product.extras,
+          counter: 1,
+        },
+      ]);
+    }
   }
-  console.log("products", products);
 
   return (
     <section className="page-section order-page">

@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 export default function Cart({ products }) {
-  console.log(products);
   return (
     <div className="cart">
       <h2>Cart</h2>
@@ -20,20 +19,6 @@ export default function Cart({ products }) {
                 <h4>{product.counter} </h4>
                 <h4>{product.name} </h4>
                 <p>{product.price} €</p>
-              </div>
-              <div>
-                <p>
-                  {product.extras.map((e) => (
-                    <>
-                      <span>
-                        <input type="checkbox" /> {e.extra} - {e.price} €
-                      </span>
-                      <br />
-                    </>
-                  ))}
-                </p>
-                <label htmlFor="comment">Comment: </label>
-                <input type="text" name="comment" id="comment" />
               </div>
             </div>
           ))}
