@@ -14,7 +14,7 @@ export default function Menu() {
   return (
     <section className="page-section">
       <h2>Menu</h2>
-      {categoryData.map((category) => (
+      {categoryData?.map((category) => (
         <>
           <h3>{category.name}</h3>
           <hr />

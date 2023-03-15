@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Matcha Joy",
+    "description": "Matcha Icecreme, Whipped Cream, Matchcreme, Tiramisu",
+    "price": 7.0,
+    "image": "",
+    "inStock": true,
+    "extras": [
+      { "extra": "whipped cream", "price": 0.5 },
+      { "extra": "Tiramisu", "price": 2.0 },
+      { "extra": "Matcha Icecreme", "price": 1.5 }
+    ],
+    "category": "Specials"
+  },
+  {
+    "name": "Crème Brûlée",
+    "description": "Crème Brûlée, Strawberries, Banana, Custard Creme",
+    "price": 7.5,
+    "image": "",
+    "inStock": true,
+    "extras": [
+      { "extra": "Custard Creme", "price": 1.0 },
+      { "extra": "Strawberries", "price": 1.0 },
+      { "extra": "Bananas", "price": 1.0 }
+    ],
+    "category": "Most Popular"
+  },
+  {
+    "name": "All Berries",
+    "description": "Strawberries, Blueberries, Raspberries Whipped Cream",
+    "price": 5.5,
+    "image": "",
+    "inStock": true,
+    "extras": [
+      { "extra": "Whipped Cream", "price": 1.0 },
+      { "extra": "Strawberries", "price": 1.0 },
+      { "extra": "Blueberries", "price": 1.0 },
+      { "extra": "Raspberries", "price": 1.0 }
+    ],
+    "category": "Berries"
+  }
+]

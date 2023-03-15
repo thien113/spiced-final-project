@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
 import styled from "styled-components";
 import Card from "./Card";
@@ -9,10 +9,9 @@ export default function Tabs() {
   const { data: categoryData, isLoading: categoryLoading } =
     useSWR("/api/categories");
 
-  const types = categoryData.map((type) => type.name);
-  types.unshift("All");
-  const [active, setActive] = useState(types[0]);
-
+  const types = categoryData?.map((type) => type.name);
+  types?.unshift("All");
+  const [active, setActive] = useState("All");
   if (!productData || !categoryData) return;
 
   if (productLoading || categoryLoading) {
