@@ -170,3 +170,24 @@ Menu
 /*
 Order Page
 */
+.order-page {
+  position: relative;
+}
+.cart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px;
+}
+.cart-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  border-radius: 20px;
+}
+.cart-logo:hover {
+  background-color: var(--pink);
+  transition-duration: 2s;
+}

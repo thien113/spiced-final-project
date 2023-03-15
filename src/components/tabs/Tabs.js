@@ -3,7 +3,7 @@ import useSWR from "swr";
 import styled from "styled-components";
 import Card from "./Card";
 
-export default function Tabs() {
+export default function Tabs({ addProduct }) {
   const { data: productData, isLoading: productLoading } =
     useSWR("/api/products");
   const { data: categoryData, isLoading: categoryLoading } =
@@ -22,20 +22,23 @@ export default function Tabs() {
     <>
       <ButtonGroup>
         {types.map((c) => (
-          <Tab key={c.name} active={active === c} onClick={() => setActive(c)}>
+          <Tab key={c} active={active === c} onClick={() => setActive(c)}>
             {c}
           </Tab>
         ))}
       </ButtonGroup>
-      <p />
-      <p>
+      <div>
         {active != "All" &&
           productData
             .filter((product) => product.category === active)
-            .map((product) => <Card product={product} />)}
+            .map((product) => (
+              <Card product={product} addProduct={addProduct} />
+            ))}
         {active === "All" &&
-          productData.map((product) => <Card product={product} />)}
-      </p>
+          productData.map((product) => (
+            <Card key={product._id} product={product} addProduct={addProduct} />
+          ))}
+      </div>
     </>
   );
 }
