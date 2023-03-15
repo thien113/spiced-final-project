@@ -174,11 +174,28 @@ Order Page
   position: relative;
 }
 .cart {
+  position: absolute;
+  background-color: white;
+  padding: 10px;
+  border: solid;
+  border-radius: 20px;
+  border-color: var(--pink);
+  top: 50;
+  right: 0;
+  z-index: 2;
+}
+.cart-items {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 50px;
+  margin: 50px;
+}
+.cart-items-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
 }
 .cart-logo {
   position: absolute;
