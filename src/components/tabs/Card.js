@@ -4,6 +4,7 @@ export default function Card({ product }) {
       <h3>{product.name}</h3>
       <p>{product.description}</p>
       <span>{product.price} €</span>
+      <button> + </button>
     </>
   );
 }
