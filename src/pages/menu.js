@@ -5,13 +5,14 @@ export default function Menu() {
     useSWR("/api/products");
   const { data: categoryData, isLoading: categoryLoading } =
     useSWR("/api/categories");
-  if (!productData && !categoryData) return;
 
-  if (productLoading && categoryLoading) {
+  if (!productData || !categoryData) return;
+
+  if (productLoading || categoryLoading) {
     return <h1>Loading...</h1>;
   }
   return (
-    <section className="menu-section">
+    <section className="page-section">
       <h2>Menu</h2>
       {categoryData.map((category) => (
         <>
@@ -24,6 +25,9 @@ export default function Menu() {
                 <h4>{product.name}</h4>
                 <p>{product.description}</p>
                 <span>{product.price} €</span>
+                <br />
+                <br />
+                <br />
               </>
             ))}
         </>

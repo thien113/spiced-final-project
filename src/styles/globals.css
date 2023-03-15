@@ -160,9 +160,12 @@ Landing Page - Info
 /*
 Menu
 */
-.menu-section {
+.page-section {
   background: url(/images/menu-bg.svg) no-repeat center center fixed;
   background-size: cover;
   padding: 50px;
-  margin: 20px;
 }
+
+/*
+About us
+*/
