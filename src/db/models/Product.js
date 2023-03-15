@@ -8,7 +8,7 @@ const productSchema = new Schema({
   image: { type: String, required: true },
   inStock: { type: Boolean },
   extras: { type: Array },
-  category: { type: Number },
+  category: { type: String },
 });
 
 const Product =
