@@ -15,11 +15,14 @@ export default function Order() {
         counter: currentProduct.counter + 1,
         price: currentProduct.price,
       };
+      // filter products except the updated one
       console.log("Updated Product:", updatedProduct);
       const newProducts = [...products];
+      // then via spreadoperator [...oldProducts, updatedProduct]
       console.log("newProducts:", newProducts);
       newProducts[currentProduct] = updatedProduct;
       setProducts(newProducts);
+
       console.log("new Products:", products);
     } else {
       setProducts((oldArray) => [
