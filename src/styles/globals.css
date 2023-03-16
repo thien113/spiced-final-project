@@ -114,7 +114,7 @@ footer {
   padding: 5px;
   margin-left: 50px;
 }
-form {
+.emailForm {
   display: flex;
   flex-direction: row;
   gap: 5px;

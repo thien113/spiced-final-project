@@ -3,9 +3,31 @@ import { useState } from "react";
 
 export default function Cart({ products, close, productHandler }) {
   const [checkedValue, setChecktedValue] = useState("");
+  const [extras, setExtra] = useState([]);
   function closeCart() {
     close(false);
   }
+
+  function addExtras(event, product) {
+    if (event.target.checked) {
+      setExtra((oldArray) => [
+        ...oldArray,
+        {
+          name: product,
+          extras: {
+            extra: event.target.name,
+            price: event.target.value,
+          },
+        },
+      ]);
+    } else {
+      const newExtras = extras.filter(
+        (e) => e.extras.extra != event.target.name
+      );
+      setExtra(newExtras);
+    }
+  }
+  console.log("extras:", extras);
 
   function saveProductsTemp() {
     sessionStorage.setItem("type", JSON.stringify(checkedValue));
@@ -39,6 +61,20 @@ export default function Cart({ products, close, productHandler }) {
                 <h4>{product.counter} </h4>
                 <h4>{product.name} </h4>
                 <p>{product.price * product.counter} €</p>
+                <div className="cart-items-row">
+                  {product.extras.map((e) => (
+                    <div key={e.value}>
+                      <label htmlFor={e.extra}>{e.extra}</label>
+                      <input
+                        type="checkbox"
+                        name={e.extra}
+                        value={e.price}
+                        onChange={(event) => addExtras(event, product.name)}
+                      />
+                      <div>{e.price} €</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
