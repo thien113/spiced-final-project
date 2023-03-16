@@ -179,7 +179,7 @@ Order Page
   padding: 10px;
   border: solid;
   border-radius: 20px;
-  border-color: var(--pink);
+  box-shadow: 5px 10px var(--pink);
   top: 50;
   right: 0;
   z-index: 2;

@@ -14,11 +14,11 @@ export default function Cart({ products }) {
       {products.length != 0 && (
         <>
           {products.map((product) => (
-            <div className="cart-items">
+            <div key={product.name} className="cart-items">
               <div className="cart-items-row">
                 <h4>{product.counter} </h4>
                 <h4>{product.name} </h4>
-                <p>{product.price} €</p>
+                <p>{product.price * product.counter} €</p>
               </div>
             </div>
           ))}
@@ -30,7 +30,10 @@ export default function Cart({ products }) {
             <label htmlFor="delivery">Delivery</label>
           </div>
           <div className="cart-items">
-            <h3>Total: €</h3>
+            <h3>
+              Total:{" "}
+              {products.reduce((total, p) => p.price * p.counter + total, 0)} €
+            </h3>
             <nav>
               <Link href="/checkout">
                 <button className="cover-button">Checkout</button>
