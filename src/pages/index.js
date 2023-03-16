@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Benefits from "../components/Benefits";
-import EmailForm from "../components/EmailForm";
+import EmailForm from "../components/forms/EmailForm";
 import Info from "../components/Info";
 
 export default function Home() {

@@ -3,7 +3,7 @@ import useSWR from "swr";
 import styled from "styled-components";
 import Card from "./Card";
 
-export default function Tabs({ productHandler, cartProducts }) {
+export default function Tabs({ productHandler }) {
   const { data: productData, isLoading: productLoading } =
     useSWR("/api/products");
   const { data: categoryData, isLoading: categoryLoading } =
@@ -39,7 +39,6 @@ export default function Tabs({ productHandler, cartProducts }) {
             <Card
               key={product._id}
               product={product}
-              cartProducts={cartProducts}
               productHandler={productHandler}
             />
           ))}

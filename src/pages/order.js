@@ -19,6 +19,7 @@ export default function Order() {
             ? currentProduct.counter + 1
             : currentProduct.counter - 1,
         price: currentProduct.price,
+        extras: [...currentProduct.extras],
       };
       // filter products except the updated one
       const oldProducts = products.filter(
@@ -62,7 +63,7 @@ export default function Order() {
           productHandler={productToCardHandler}
         />
       )}
-      <Tabs productHandler={productToCardHandler} cartProducts={products} />
+      <Tabs productHandler={productToCardHandler} />
     </section>
   );
 }

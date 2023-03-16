@@ -1,9 +1,17 @@
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Cart({ products, close, productHandler }) {
+  const [checkedValue, setChecktedValue] = useState("");
   function closeCart() {
     close(false);
   }
+
+  function saveProductsTemp() {
+    sessionStorage.setItem("type", JSON.stringify(checkedValue));
+    sessionStorage.setItem("products", JSON.stringify(products));
+  }
+
   return (
     <div className="cart">
       <h2>Cart</h2>
@@ -36,9 +44,20 @@ export default function Cart({ products, close, productHandler }) {
           ))}
           <hr />
           <div className="cart-items-row">
-            <input type="checkbox" name="pickup" />
+            <input
+              type="checkbox"
+              name="pickup"
+              checked={checkedValue === "pickup"}
+              onChange={() => setChecktedValue("pickup")}
+            />
             <label htmlFor="pickup">Pickup</label>
-            <input type="checkbox" name="delivery" />
+
+            <input
+              type="checkbox"
+              name="delivery"
+              checked={checkedValue === "delivery"}
+              onChange={() => setChecktedValue("delivery")}
+            />
             <label htmlFor="delivery">Delivery</label>
           </div>
           <div className="cart-items">
@@ -48,7 +67,9 @@ export default function Cart({ products, close, productHandler }) {
             </h3>
             <nav>
               <Link href="/checkout">
-                <button className="cover-button">Checkout</button>
+                <button onClick={saveProductsTemp} className="cover-button">
+                  Checkout
+                </button>
               </Link>
             </nav>
           </div>
