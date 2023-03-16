@@ -35,7 +35,6 @@ export default function Checkout() {
             <h4>{p.name}</h4>
             <p>Unit Price: {p.price}</p>
             <p>Subtotal: {p.price * p.counter} €</p>
-            <p>Extras: {extras} €</p>
           </div>
           <div className="cart-items-row">
             {p.extras.map((e) => (
@@ -54,9 +53,14 @@ export default function Checkout() {
         </div>
       ))}
       <hr />
+      <h4>
+        SubTotal:{" "}
+        {products.reduce((total, p) => p.price * p.counter + total, 0)} €
+      </h4>
+      <h4>Extras: {extras} €</h4>
       <h3>
         Total:{" "}
-        {products.reduce((total, p) => p.price * p.counter + extras + total, 0)}{" "}
+        {products.reduce((total, p) => p.price * p.counter + total, 0) + extras}{" "}
         €
       </h3>
     </section>
