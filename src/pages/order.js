@@ -7,18 +7,28 @@ export default function Order() {
   const initialArray = [];
   const [products, setProducts] = useState(initialArray);
   const [cartActive, setCardActive] = useState(false);
-  function addProductToCard(product) {
+
+  function productToCardHandler(product, operator) {
+    setCardActive(true);
     if (products.some((p) => p.name === product.name)) {
       const currentProduct = products.find((p) => p.name === product.name);
       const updatedProduct = {
         name: currentProduct.name,
-        counter: currentProduct.counter + 1,
+        counter:
+          operator === "plus"
+            ? currentProduct.counter + 1
+            : currentProduct.counter - 1,
         price: currentProduct.price,
       };
       // filter products except the updated one
-      const oldProducts = products.filter((p) => p.name != product.name);
+      const oldProducts = products.filter(
+        (p) => p.name != product.name && product.counter > 0
+      );
       // then via spreadoperator [...oldProducts, updatedProduct]
-      const newProducts = [...oldProducts, updatedProduct];
+      const newProducts =
+        updatedProduct.counter <= 0
+          ? [...oldProducts]
+          : [...oldProducts, updatedProduct];
       setProducts(newProducts);
     } else {
       setProducts((oldArray) => [
@@ -45,8 +55,14 @@ export default function Order() {
         alt="cart logo"
       />
       <hr />
-      {cartActive && <Cart products={products} />}
-      <Tabs addProduct={addProductToCard} />
+      {cartActive && (
+        <Cart
+          products={products}
+          close={setCardActive}
+          productHandler={productToCardHandler}
+        />
+      )}
+      <Tabs productHandler={productToCardHandler} cartProducts={products} />
     </section>
   );
 }

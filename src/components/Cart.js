@@ -1,9 +1,13 @@
 import Link from "next/link";
 
-export default function Cart({ products }) {
+export default function Cart({ products, close, productHandler }) {
+  function closeCart() {
+    close(false);
+  }
   return (
     <div className="cart">
       <h2>Cart</h2>
+      <button onClick={closeCart}>X</button>
       {products.length === 0 && (
         <>
           <div className="cart-items">
@@ -16,6 +20,14 @@ export default function Cart({ products }) {
           {products.map((product) => (
             <div key={product.name} className="cart-items">
               <div className="cart-items-row">
+                <button onClick={() => productHandler(product, "plus")}>
+                  {" "}
+                  +{" "}
+                </button>
+                <button onClick={() => productHandler(product, "minus")}>
+                  {" "}
+                  -{" "}
+                </button>
                 <h4>{product.counter} </h4>
                 <h4>{product.name} </h4>
                 <p>{product.price * product.counter} €</p>

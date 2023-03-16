@@ -3,7 +3,7 @@ import useSWR from "swr";
 import styled from "styled-components";
 import Card from "./Card";
 
-export default function Tabs({ addProduct }) {
+export default function Tabs({ productHandler, cartProducts }) {
   const { data: productData, isLoading: productLoading } =
     useSWR("/api/products");
   const { data: categoryData, isLoading: categoryLoading } =
@@ -32,11 +32,16 @@ export default function Tabs({ addProduct }) {
           productData
             .filter((product) => product.category === active)
             .map((product) => (
-              <Card product={product} addProduct={addProduct} />
+              <Card product={product} productHandler={productHandler} />
             ))}
         {active === "All" &&
           productData.map((product) => (
-            <Card key={product._id} product={product} addProduct={addProduct} />
+            <Card
+              key={product._id}
+              product={product}
+              cartProducts={cartProducts}
+              productHandler={productHandler}
+            />
           ))}
       </div>
     </>
