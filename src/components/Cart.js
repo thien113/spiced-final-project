@@ -10,24 +10,56 @@ export default function Cart({ products, close, productHandler }) {
 
   function addExtras(event, product) {
     if (event.target.checked) {
-      setExtra((oldArray) => [
-        ...oldArray,
-        {
-          name: product,
-          extras: {
-            extra: event.target.name,
-            price: event.target.value,
+      if (extras.find((e) => e.name === product)) {
+        console.log("inside avalaible product");
+        const currentExtra = extras.find((e) => e.name === product);
+        console.log("currentExtra object:", currentExtra);
+        console.log("currentProduct - Extras:", currentExtra.extras);
+        setExtra([
+          {
+            name: product,
+            extras: [
+              ...currentExtra.extras,
+              {
+                extra: event.target.name,
+                price: event.target.value,
+              },
+            ],
           },
-        },
-      ]);
+        ]);
+        console.log(extras);
+      } else {
+        console.log("inside new extra");
+        setExtra((oldArray) => [
+          ...oldArray,
+          {
+            name: product,
+            extras: [
+              {
+                extra: event.target.name,
+                price: event.target.value,
+              },
+            ],
+          },
+        ]);
+      }
     } else {
-      const newExtras = extras.filter(
-        (e) => e.extras.extra != event.target.name
+      const currentProduct = extras.find((e) => e.name === product);
+      const extra = currentProduct.extra.filter(
+        (e) => e.extra != event.target.name
       );
-      setExtra(newExtras);
+      console.log("currentProduct", currentProduct);
+      console.log("extra after fitlering", extra);
+      //console.log("newExtra after get new array of extra", newExtra);
+      /*
+      get the current product inside extras state
+      get to the extras value inside of the object
+      use filter to get everything back except the current event.target.name
+      */
+      //setExtra((oldArray) => [...oldArray, newExtra]);
     }
   }
-  console.log("extras:", extras);
+  console.log(extras);
 
   function saveProductsTemp() {
     sessionStorage.setItem("type", JSON.stringify(checkedValue));
