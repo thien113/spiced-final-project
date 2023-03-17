@@ -11,11 +11,8 @@ export default function Cart({ products, close, productHandler }) {
   function addExtras(event, product) {
     if (event.target.checked) {
       if (extras.find((e) => e.name === product)) {
-        console.log("inside existing product");
         const currentProduct = extras.find((e) => e.name === product);
         const oldProducts = extras.filter((e) => e.name != product);
-        console.log("currentProduct", currentProduct);
-        console.log("oldProducts", oldProducts);
         setExtra([
           ...oldProducts,
           {
@@ -30,7 +27,6 @@ export default function Cart({ products, close, productHandler }) {
           },
         ]);
       } else {
-        console.log("inside not existing product");
         setExtra((oldArray) => [
           ...oldArray,
           {
@@ -46,7 +42,6 @@ export default function Cart({ products, close, productHandler }) {
       }
     } else {
       const currentProduct = extras.find((e) => e.name === product);
-      console.log("inside unchecked");
       //delete extra of uncheck
       const newExtra = currentProduct.extras.filter(
         (e) => e.extra != event.target.name
@@ -57,16 +52,12 @@ export default function Cart({ products, close, productHandler }) {
       const oldExtras = extras.filter((e) => e.name != product);
 
       if (currentProduct.extras.length === 0) {
-        console.log("currentProduct.extras.length === 0");
-        console.log("oldExtras", oldExtras);
-        console.log("oldExtras.length > 0", oldExtras.length > 0);
         oldExtras.length > 0 ? setExtra(oldExtras) : setExtra([]);
       } else {
         setExtra([...oldExtras, currentProduct]);
       }
     }
   }
-  console.log("extras end of function", extras);
 
   function saveProductsTemp() {
     sessionStorage.setItem("type", JSON.stringify(checkedValue));
@@ -140,6 +131,7 @@ export default function Cart({ products, close, productHandler }) {
               Total:{" "}
               {products.reduce((total, p) => p.price * p.counter + total, 0)} €
             </h3>
+
             <nav>
               <Link href="/checkout">
                 <button onClick={saveProductsTemp} className="cover-button">
