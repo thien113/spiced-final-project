@@ -5,14 +5,21 @@ export default function Cart({ products, close, productHandler }) {
   const [checkedValue, setChecktedValue] = useState("");
   const [extras, setExtra] = useState([]);
   const [extrasTotalPrice, setExtrasTotalPrice] = useState(0);
+  const [subtotal, setSubtotal] = useState(0);
+  const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    const extrasArray = extras.map((e) => e.extras).flat(1);
-    const extrasTotalPrice = extrasArray.reduce((total, e) => {
-      return total + e.price;
-    }, 0);
-    setExtrasTotalPrice(extrasTotalPrice);
-  }, extras);
+  useEffect(
+    () => {
+      const extrasTotalPrice = sumExtrasTotalPrice();
+      setExtrasTotalPrice(extrasTotalPrice);
+      const subTotal = sumSubTotal();
+      setSubtotal(subTotal);
+      const total = sumTotal();
+      setTotal(total);
+    },
+    extras,
+    subtotal
+  );
   // not working properly
   function closeCart() {
     close(false);
@@ -72,6 +79,31 @@ export default function Cart({ products, close, productHandler }) {
   function saveProductsTemp() {
     sessionStorage.setItem("type", JSON.stringify(checkedValue));
     sessionStorage.setItem("products", JSON.stringify(products));
+    sessionStorage.setItem("extras", JSON.stringify(extras));
+    sessionStorage.setItem(
+      "extrasTotalPrice",
+      JSON.stringify(extrasTotalPrice)
+    );
+    sessionStorage.setItem("subtotal", JSON.stringify(subtotal));
+    sessionStorage.setItem("total", JSON.stringify(total));
+  }
+
+  function sumExtrasTotalPrice() {
+    const extrasArray = extras.map((e) => e.extras).flat(1);
+    const extrasTotalPrice = extrasArray.reduce((total, e) => {
+      return total + e.price;
+    }, 0);
+    return extrasTotalPrice;
+  }
+
+  function sumSubTotal() {
+    return products.reduce((total, p) => p.price * p.counter + total, 0);
+  }
+
+  function sumTotal() {
+    const extrasTotal = sumExtrasTotalPrice();
+    const subTotal = sumSubTotal();
+    return extrasTotal + subTotal;
   }
 
   return (
@@ -141,16 +173,8 @@ export default function Cart({ products, close, productHandler }) {
               Extras:
               {extrasTotalPrice} €
             </h3>
-            <h3>
-              Subtotal:{" "}
-              {products.reduce((total, p) => p.price * p.counter + total, 0)} €
-            </h3>
-            <h3>
-              Total:{" "}
-              {products.reduce((total, p) => p.price * p.counter + total, 0) +
-                extrasTotalPrice}{" "}
-              €
-            </h3>
+            <h3>Subtotal: {subtotal} €</h3>
+            <h3>Total: {total}€</h3>
             <nav>
               <Link href="/checkout">
                 <button onClick={saveProductsTemp} className="cover-button">

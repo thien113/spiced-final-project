@@ -1,6 +1,13 @@
 import Payment from "../Payment";
 
-export default function CheckoutForm({ type, products }) {
+export default function CheckoutForm({
+  type,
+  products,
+  extras,
+  extrasTotal,
+  total,
+  subtotal,
+}) {
   async function addOrder(event) {
     event.preventDefault();
 
@@ -53,15 +60,14 @@ export default function CheckoutForm({ type, products }) {
             <h4>{p.name}</h4>
             <p>Unit Price: {p.price}</p>
             <p>Subtotal: {p.price * p.counter} €</p>
+            <p>Extrastotal: {extrasTotal} €</p>
           </div>
         </div>
       ))}
       <hr />
       <Payment />
       <hr />
-      <h3>
-        Total: {products.reduce((total, p) => p.price * p.counter + total, 0)} €
-      </h3>
+      <h3>Total: {total} €</h3>
     </form>
   );
 }
