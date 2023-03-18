@@ -13,15 +13,17 @@ export default function CheckoutForm({
 
     const data = new FormData(event.target);
     const formData = Object.fromEntries(data);
-    const orderData = [
-      {
-        ...formData,
-        type: type,
-        order: { ...products },
-      },
-    ];
+    const orderData = {
+      ...formData,
+      type: type,
+      order: { ...products },
+      total: total,
+      subtotal: subtotal,
+      extrasTotal: extrasTotal,
+      extras: { ...extras },
+    };
     console.log("orderData", orderData);
-    /*const response = await fetch("/api/orders", {
+    const response = await fetch("/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,10 +32,11 @@ export default function CheckoutForm({
     });
     if (response.ok) {
       await response.json();
+      console.log("ok");
       event.target.reset();
     } else {
       console.error(response.status);
-    }*/
+    }
   }
   return (
     <form onSubmit={addOrder}>

@@ -10,8 +10,10 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "POST") {
+    console.log("inside method post of orders index");
     try {
       const orderData = request.body;
+      console.log("requestbody:", request.body);
       const order = new Order(orderData);
       await order.save();
       return response.status(201).json({ status: "Order created." });
