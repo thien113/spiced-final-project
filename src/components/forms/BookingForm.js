@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function BookingForm({ onSubmit }) {
   async function handleSubmit(event) {
     onSubmit(event);
@@ -30,8 +32,15 @@ export default function BookingForm({ onSubmit }) {
           <label htmlFor="date">Date: </label>
           <input type="date" id="date" name="date" />
         </fieldset>
-        <label htmlFor="agb">AGB</label>
         <input type="checkbox" name="agb" required />
+        <label htmlFor="agb">
+          <Link href="/terms-of-conditions">Terms Of Conditions </Link>
+        </label>
+        <input type="checkbox" name="privacy" required />
+        <label htmlFor="privacy">
+          <Link href="/privacy-policy">Privacy Policy</Link>
+        </label>
+
         <button>Book a Table</button>
       </form>
     </section>

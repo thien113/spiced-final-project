@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import Payment from "../Payment";
 
@@ -66,19 +67,30 @@ export default function CheckoutForm({
             <h4>{p.name}</h4>
             <p>Unit Price: {p.price}</p>
             <p>Subtotal: {p.price * p.counter} €</p>
-            <p>
-              Extras:
-              {extras
-                .find((extra) => extra.name === p.name)
-                .extras.map((e) => (
-                  <>{e.extra}</>
-                ))}
-            </p>
+            {extras > 0 && (
+              <p>
+                Extras:
+                {extras
+                  .find((extra) => extra.name === p.name)
+                  .extras.map((e) => (
+                    <>{e.extra}</>
+                  ))}
+              </p>
+            )}
           </div>
         </div>
       ))}
       <hr />
       <Payment setPayment={setPayment} payment={payment} />
+      <hr />
+      <input type="checkbox" name="agb" required />
+      <label htmlFor="agb">
+        <Link href="/terms-of-conditions">Terms Of Conditions </Link>
+      </label>
+      <input type="checkbox" name="privacy" required />
+      <label htmlFor="privacy">
+        <Link href="/privacy-policy">Privacy Policy</Link>
+      </label>
       <hr />
       <p>Subtotal: {subtotal} €</p>
       <p>Extrastotal: {extrasTotal} €</p>
