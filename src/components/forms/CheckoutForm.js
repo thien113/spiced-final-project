@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Payment from "../Payment";
 
 export default function CheckoutForm({
@@ -8,6 +9,8 @@ export default function CheckoutForm({
   total,
   subtotal,
 }) {
+  const [payment, setPayment] = useState("");
+
   async function addOrder(event) {
     event.preventDefault();
 
@@ -53,7 +56,7 @@ export default function CheckoutForm({
       <input type="text" name="telephone" />
       <label htmlFor="notes">Notes: </label>
       <input type="text" name="notes" />
-      <button>Order</button>
+      {payment && <button>Order</button>}
 
       <h3>Your Order:</h3>
       {products.map((p) => (
@@ -75,7 +78,7 @@ export default function CheckoutForm({
         </div>
       ))}
       <hr />
-      <Payment />
+      <Payment setPayment={setPayment} payment={payment} />
       <hr />
       <p>Subtotal: {subtotal} €</p>
       <p>Extrastotal: {extrasTotal} €</p>

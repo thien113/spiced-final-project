@@ -1,10 +1,7 @@
-import { useState } from "react";
-
-export default function Payment() {
-  const [payment, setPayment] = useState("");
-
+export default function Payment({ setPayment, payment }) {
   return (
     <div className="cart-items">
+      <h3>Please Select One: </h3>
       <input
         type="checkbox"
         name="payment"
@@ -13,7 +10,6 @@ export default function Payment() {
         onChange={() => setPayment("googlepay")}
       />
       <label htmlFor="googlepay">Googlepay</label>
-
       <input
         type="checkbox"
         name="payment"
@@ -22,7 +18,6 @@ export default function Payment() {
         onChange={() => setPayment("applepay")}
       />
       <label htmlFor="applepay">Applepay</label>
-
       <input
         type="checkbox"
         name="payment"

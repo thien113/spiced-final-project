@@ -152,6 +152,7 @@ export default function Cart({ products, close, productHandler }) {
           ))}
           <hr />
           <div className="cart-items-row">
+            Please select one:
             <input
               type="checkbox"
               name="pickup"
@@ -159,7 +160,6 @@ export default function Cart({ products, close, productHandler }) {
               onChange={() => setChecktedValue("pickup")}
             />
             <label htmlFor="pickup">Pickup</label>
-
             <input
               type="checkbox"
               name="delivery"
@@ -177,9 +177,11 @@ export default function Cart({ products, close, productHandler }) {
             <h3>Total: {total}€</h3>
             <nav>
               <Link href="/checkout">
-                <button onClick={saveProductsTemp} className="cover-button">
-                  Checkout
-                </button>
+                {checkedValue && (
+                  <button onClick={saveProductsTemp} className="cover-button">
+                    Checkout
+                  </button>
+                )}
               </Link>
             </nav>
           </div>
