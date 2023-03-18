@@ -1,9 +1,19 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Cart({ products, close, productHandler }) {
   const [checkedValue, setChecktedValue] = useState("");
   const [extras, setExtra] = useState([]);
+  const [extrasTotalPrice, setExtrasTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const extrasArray = extras.map((e) => e.extras).flat(1);
+    const extrasTotalPrice = extrasArray.reduce((total, e) => {
+      return total + e.price;
+    }, 0);
+    setExtrasTotalPrice(extrasTotalPrice);
+  }, extras);
+  // not working properly
   function closeCart() {
     close(false);
   }
@@ -21,7 +31,7 @@ export default function Cart({ products, close, productHandler }) {
               ...currentProduct.extras,
               {
                 extra: event.target.name,
-                price: event.target.value,
+                price: Number(event.target.value),
               },
             ],
           },
@@ -34,7 +44,7 @@ export default function Cart({ products, close, productHandler }) {
             extras: [
               {
                 extra: event.target.name,
-                price: event.target.value,
+                price: Number(event.target.value),
               },
             ],
           },
@@ -128,10 +138,19 @@ export default function Cart({ products, close, productHandler }) {
           </div>
           <div className="cart-items">
             <h3>
-              Total:{" "}
+              Extras:
+              {extrasTotalPrice} €
+            </h3>
+            <h3>
+              Subtotal:{" "}
               {products.reduce((total, p) => p.price * p.counter + total, 0)} €
             </h3>
-
+            <h3>
+              Total:{" "}
+              {products.reduce((total, p) => p.price * p.counter + total, 0) +
+                extrasTotalPrice}{" "}
+              €
+            </h3>
             <nav>
               <Link href="/checkout">
                 <button onClick={saveProductsTemp} className="cover-button">
