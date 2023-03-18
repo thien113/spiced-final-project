@@ -60,13 +60,22 @@ export default function CheckoutForm({
             <h4>{p.name}</h4>
             <p>Unit Price: {p.price}</p>
             <p>Subtotal: {p.price * p.counter} €</p>
-            <p>Extrastotal: {extrasTotal} €</p>
+            <p>
+              Extras:
+              {extras
+                .find((extra) => extra.name === p.name)
+                .extras.map((e) => (
+                  <>{e.extra}</>
+                ))}
+            </p>
           </div>
         </div>
       ))}
       <hr />
       <Payment />
       <hr />
+      <p>Subtotal: {subtotal} €</p>
+      <p>Extrastotal: {extrasTotal} €</p>
       <h3>Total: {total} €</h3>
     </form>
   );

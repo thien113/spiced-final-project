@@ -20,7 +20,7 @@ export default function Cart({ products, close, productHandler }) {
     extras,
     subtotal
   );
-  // not working properly
+  // subtotal,totals doesnt change on first checked extras?
   function closeCart() {
     close(false);
   }
