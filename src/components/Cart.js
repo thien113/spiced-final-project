@@ -17,8 +17,10 @@ export default function Cart({ products, close, productHandler }) {
       const total = sumTotal();
       setTotal(total);
     },
-    extras,
-    subtotal
+    [extras],
+    [subtotal],
+    [extrasTotalPrice],
+    [total]
   );
   // subtotal,totals doesnt change on first checked extras? not working
   function closeCart() {
@@ -173,7 +175,10 @@ export default function Cart({ products, close, productHandler }) {
               Extras:
               {extrasTotalPrice} €
             </h3>
-            <h3>Subtotal: {subtotal} €</h3>
+            <h3>
+              Subtotal:{" "}
+              {products.reduce((total, p) => p.price * p.counter + total, 0)} €
+            </h3>
             <h3>Total: {total}€</h3>
             <nav>
               <Link href="/checkout">

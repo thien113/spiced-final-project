@@ -1,5 +1,20 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
+const ExtrasProductSchema = mongoose.Schema({
+  extra: { type: String },
+  price: { type: Number },
+});
+const ExtrasSchema = mongoose.Schema({
+  extras: [{ type: ExtrasProductSchema }],
+  name: { type: String },
+});
+
+const ProductsSchema = mongoose.Schema({
+  name: { type: String },
+  counter: { type: Number },
+  price: { type: Number },
+  extras: [{ type: ExtrasProductSchema }],
+});
 
 const orderSchema = new Schema({
   name: { type: String, required: true },
@@ -8,20 +23,8 @@ const orderSchema = new Schema({
   notes: { type: String },
   payment: { type: String },
   type: { type: String },
-  /*
-  arrays in mongdoDB not working
-  order: {
-    name: { type: String },
-    counter: { type: Number },
-    price: { type: Number },
-  },
-  extras: {
-    extras: {
-      extra: { type: String },
-      price: { type: Number },
-    },
-    name: { type: String },
-  },*/
+  products: [{ type: ProductsSchema }],
+  extras: [{ type: ExtrasSchema }],
   subtotal: { type: Number },
   extrasTotal: { type: Number },
   total: { type: Number },

@@ -20,13 +20,12 @@ export default function CheckoutForm({
     const orderData = {
       ...formData,
       type: type,
-      order: { ...products },
+      products: [...products],
       total: total,
       subtotal: subtotal,
       extrasTotal: extrasTotal,
-      extras: { ...extras },
+      extras: [...extras],
     };
-    console.log("orderData", orderData);
     const response = await fetch("/api/orders", {
       method: "POST",
       headers: {
@@ -36,7 +35,7 @@ export default function CheckoutForm({
     });
     if (response.ok) {
       await response.json();
-      console.log("ok");
+
       event.target.reset();
     } else {
       console.error(response.status);
@@ -67,13 +66,15 @@ export default function CheckoutForm({
             <h4>{p.name}</h4>
             <p>Unit Price: {p.price}</p>
             <p>Subtotal: {p.price * p.counter} €</p>
-            {extras > 0 && (
+            {extras && (
               <p>
                 Extras:
                 {extras
                   .find((extra) => extra.name === p.name)
                   .extras.map((e) => (
-                    <>{e.extra}</>
+                    <>
+                      {e.extra} {e.price} €
+                    </>
                   ))}
               </p>
             )}

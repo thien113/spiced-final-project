@@ -6,10 +6,10 @@ import Image from "next/image";
 export default function Order() {
   const initialArray = [];
   const [products, setProducts] = useState(initialArray);
-  const [cartActive, setCardActive] = useState(false);
+  const [cartActive, setCartActive] = useState(false);
 
   function productToCardHandler(product, operator) {
-    setCardActive(true);
+    setCartActive(true);
     if (products.some((p) => p.name === product.name)) {
       const currentProduct = products.find((p) => p.name === product.name);
       const updatedProduct = {
@@ -48,7 +48,7 @@ export default function Order() {
     <section className="page-section order-page">
       <h2>Order</h2>
       <Image
-        onClick={() => setCardActive(!cartActive)}
+        onClick={() => setCartActive(!cartActive)}
         className="cart-logo"
         src="/images/cart.svg"
         height={80}
@@ -59,7 +59,7 @@ export default function Order() {
       {cartActive && (
         <Cart
           products={products}
-          close={setCardActive}
+          close={setCartActive}
           productHandler={productToCardHandler}
         />
       )}
