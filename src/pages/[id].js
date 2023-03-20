@@ -13,7 +13,8 @@ export default function OverviewPage() {
     return <h1>Loading...</h1>;
   }
   const extras = data.extras;
-  const extrasToT = extras.reduce((total, p) => p.price + total, 0);
+  const productsCost = data.products.map((p) => p.price * p.counter);
+  console.log(productsCost);
 
   return (
     <section class="page-section">
@@ -32,8 +33,9 @@ export default function OverviewPage() {
           <th>Price per Product</th>
           <th>Amount</th>
           <th>Subtotal</th>
+
           {extras && <th>Extras</th>}
-          <th>Extrastotal</th>
+          {extras && <th>Extrastotal</th>}
         </tr>
         <tr>
           <td>
@@ -52,9 +54,9 @@ export default function OverviewPage() {
             ))}
           </td>
           <td>
-            {data.products.map((p) => (
-              <p>{p.counter * p.price} €</p>
-            ))}{" "}
+            {productsCost.map((c) => (
+              <p>{c} €</p>
+            ))}
           </td>
           <td>
             {extras.map((e) => (
