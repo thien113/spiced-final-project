@@ -21,6 +21,7 @@ export default function OverviewPage() {
   }
   const deliveryTime = randomTime(30, 60);
   const pickupTime = randomTime(5, 15);
+
   //geolocation
 
   return (
@@ -45,8 +46,8 @@ export default function OverviewPage() {
           <th>Amount</th>
           <th>Subtotal</th>
 
-          {extras && <th>Extras</th>}
-          {extras && <th>Extrastotal</th>}
+          {extras.length > 0 && <th>Extras</th>}
+          {extras.length > 0 && <th>Extrastotal</th>}
         </tr>
         <tr>
           <td>
@@ -69,27 +70,31 @@ export default function OverviewPage() {
               <p>{c} €</p>
             ))}
           </td>
-          <td>
-            {extras.map((e) => (
-              <>
-                <p>
-                  {e.extras.map((a) => (
-                    <li>{a.extra}</li>
-                  ))}
-                </p>
-              </>
-            ))}
-          </td>
-          <th>
-            {extras.map((e) => (
-              <>
-                <p>{e.extras.reduce((total, a) => a.price + total, 0)} €</p>
-              </>
-            ))}{" "}
-          </th>
+          {extras.length > 0 && (
+            <td>
+              {extras.map((e) => (
+                <>
+                  <p>
+                    {e.extras.map((a) => (
+                      <li>{a.extra}</li>
+                    ))}
+                  </p>
+                </>
+              ))}
+            </td>
+          )}
+          {extras.length > 0 && (
+            <th>
+              {extras.map((e) => (
+                <>
+                  <p>{e.extras.reduce((total, a) => a.price + total, 0)} €</p>
+                </>
+              ))}{" "}
+            </th>
+          )}
         </tr>
       </table>
-      <strong>Extrastotal: {data.extrasTotal} € </strong>
+      {extras.length > 0 && <strong>Extrastotal: {data.extrasTotal} € </strong>}
       <br />
       <strong>Subtotal: {data.subtotal} € </strong>
       <hr />

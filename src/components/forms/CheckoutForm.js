@@ -69,7 +69,7 @@ export default function CheckoutForm({
             <h4>{p.name}</h4>
             <p>Unit Price: {p.price}</p>
             <p>Subtotal: {p.price * p.counter} €</p>
-            {extras && (
+            {extras.length > 0 && (
               <p>
                 Extras:
                 {extras
