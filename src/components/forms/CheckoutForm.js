@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/router";
+
 import Payment from "../Payment";
 
 export default function CheckoutForm({
@@ -10,6 +12,7 @@ export default function CheckoutForm({
   total,
   subtotal,
 }) {
+  const router = useRouter();
   const [payment, setPayment] = useState("");
 
   async function addOrder(event) {
@@ -34,9 +37,9 @@ export default function CheckoutForm({
       body: JSON.stringify(orderData),
     });
     if (response.ok) {
-      await response.json();
-
+      const product = await response.json();
       event.target.reset();
+      router.push(`/${product._id}`);
     } else {
       console.error(response.status);
     }

@@ -14,8 +14,10 @@ export default async function handler(request, response) {
     try {
       const orderData = request.body;
       const order = new Order(orderData);
-      await order.save();
-      return response.status(201).json(orderData);
+      const createdOrder = await order.save();
+      console.log("createdOrder:", createdOrder);
+
+      return response.status(201).json(createdOrder);
     } catch (error) {
       console.error(error);
       return response.status(400).json({ error: error.message });
