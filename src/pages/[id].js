@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import Map from "../components/Map";
 
 export default function OverviewPage() {
   const router = useRouter();
@@ -31,6 +32,7 @@ export default function OverviewPage() {
         {data.type === "delivery" && <strong>{deliveryTime}</strong>}
         {data.type === "pickup" && <strong>{pickupTime}</strong>} min!
       </h2>
+      <Map />
       <h4>For {data.type}:</h4>
       <ul>
         <li>Name: {data.name}</li>
