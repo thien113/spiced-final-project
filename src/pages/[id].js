@@ -14,15 +14,26 @@ export default function OverviewPage() {
   }
   const extras = data.extras;
   const productsCost = data.products.map((p) => p.price * p.counter);
-  console.log(productsCost);
+
+  //random time creator
+  function randomTime(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  const deliveryTime = randomTime(30, 60);
+  const pickupTime = randomTime(5, 15);
+  //geolocation
 
   return (
     <section class="page-section">
-      <h2>Overview:</h2>
+      <h2>
+        Overview: Your Order is ready in{" "}
+        {data.type === "delivery" && <strong>{deliveryTime}</strong>}
+        {data.type === "pickup" && <strong>{pickupTime}</strong>} min!
+      </h2>
       <h4>For {data.type}:</h4>
       <ul>
         <li>Name: {data.name}</li>
-        <li>Adress: {data.adress}</li>
+        {data.adress && <li>Adress: {data.adress}</li>}
         <li>TelePhone:{data.telephone}</li>
         <li>Total: {data.total}€</li>
       </ul>
@@ -78,8 +89,12 @@ export default function OverviewPage() {
           </th>
         </tr>
       </table>
+      <strong>Extrastotal: {data.extrasTotal} € </strong>
+      <br />
+      <strong>Subtotal: {data.subtotal} € </strong>
+      <hr />
       <strong>Total: {data.total} €</strong>
-      <p>Your already paid with {data.payment}</p>
+      <p>You already paid with {data.payment}</p>
     </section>
   );
 }
