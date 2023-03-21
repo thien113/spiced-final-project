@@ -113,11 +113,9 @@ export default function Cart({ products, close, productHandler }) {
       <h2>Cart</h2>
       <button onClick={closeCart}>X</button>
       {products.length === 0 && (
-        <>
-          <div className="cart-items">
-            <p>Your cart is empty...</p>
-          </div>
-        </>
+        <div className="cart-items">
+          <p>Your cart is empty...</p>
+        </div>
       )}
       {products.length != 0 && (
         <>

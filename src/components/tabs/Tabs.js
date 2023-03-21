@@ -32,7 +32,11 @@ export default function Tabs({ productHandler }) {
           productData
             .filter((product) => product.category === active)
             .map((product) => (
-              <Card product={product} productHandler={productHandler} />
+              <Card
+                key={product._id}
+                product={product}
+                productHandler={productHandler}
+              />
             ))}
         {active === "All" &&
           productData.map((product) => (

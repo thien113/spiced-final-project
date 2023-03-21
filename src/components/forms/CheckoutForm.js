@@ -75,9 +75,9 @@ export default function CheckoutForm({
                 {extras
                   .find((extra) => extra.name === p.name)
                   .extras.map((e) => (
-                    <>
+                    <li key={e.name}>
                       {e.extra} {e.price} €
-                    </>
+                    </li>
                   ))}
               </p>
             )}

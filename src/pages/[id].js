@@ -26,7 +26,7 @@ export default function OverviewPage() {
   //geolocation
 
   return (
-    <section class="page-section">
+    <section className="page-section">
       <h2>
         Overview: Your Order is ready in{" "}
         {data.type === "delivery" && <strong>{deliveryTime}</strong>}
@@ -42,59 +42,61 @@ export default function OverviewPage() {
       </ul>
       <h4>Your Order</h4>
       <table>
-        <tr>
-          <th>Product</th>
-          <th>Price per Product</th>
-          <th>Amount</th>
-          <th>Subtotal</th>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price per Product</th>
+            <th>Amount</th>
+            <th>Subtotal</th>
 
-          {extras.length > 0 && <th>Extras</th>}
-          {extras.length > 0 && <th>Extrastotal</th>}
-        </tr>
-        <tr>
-          <td>
-            {data.products.map((p) => (
-              <p> {p.name}</p>
-            ))}
-          </td>
-          <td>
-            {data.products.map((p) => (
-              <p> {p.price} €</p>
-            ))}
-          </td>
-          <td>
-            {data.products.map((p) => (
-              <p>{p.counter}</p>
-            ))}
-          </td>
-          <td>
-            {productsCost.map((c) => (
-              <p>{c} €</p>
-            ))}
-          </td>
-          {extras.length > 0 && (
+            {extras.length > 0 && <th>Extras</th>}
+            {extras.length > 0 && <th>Extrastotal</th>}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
             <td>
-              {extras.map((e) => (
-                <>
-                  <p>
-                    {e.extras.map((a) => (
-                      <li>{a.extra}</li>
-                    ))}
-                  </p>
-                </>
+              {data.products.map((p) => (
+                <p key={p.name}> {p.name}</p>
               ))}
             </td>
-          )}
-          {extras.length > 0 && (
-            <th>
-              {extras.map((e) => (
-                <>
-                  <p>{e.extras.reduce((total, a) => a.price + total, 0)} €</p>
-                </>
-              ))}{" "}
-            </th>
-          )}
-        </tr>
+            <td>
+              {data.products.map((p) => (
+                <p key={p.name}> {p.price} €</p>
+              ))}
+            </td>
+            <td>
+              {data.products.map((p) => (
+                <p key={p.name}>{p.counter}</p>
+              ))}
+            </td>
+            <td>
+              {productsCost.map((c) => (
+                <p key={c}>{c} €</p>
+              ))}
+            </td>
+            {extras.length > 0 && (
+              <td>
+                {extras.map((e) => (
+                  <p key={e.name}>
+                    {e.extras.map((a) => (
+                      <li key={a.extra}>{a.extra}</li>
+                    ))}
+                  </p>
+                ))}
+              </td>
+            )}
+            {extras.length > 0 && (
+              <th>
+                {extras.map((e) => (
+                  <p key={e.name}>
+                    {e.extras.reduce((total, a) => a.price + total, 0)} €
+                  </p>
+                ))}{" "}
+              </th>
+            )}
+          </tr>
+        </tbody>
       </table>
       {extras.length > 0 && <strong>Extrastotal: {data.extrasTotal} € </strong>}
       <br />
