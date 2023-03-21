@@ -32,7 +32,7 @@ export default function OverviewPage() {
         {data.type === "delivery" && <strong>{deliveryTime}</strong>}
         {data.type === "pickup" && <strong>{pickupTime}</strong>} min!
       </h2>
-      <Map />
+      {data.type === "delivery" && <Map />}
       <h4>For {data.type}:</h4>
       <ul>
         <li>Name: {data.name}</li>
