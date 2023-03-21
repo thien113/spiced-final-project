@@ -45,7 +45,7 @@ export default function CheckoutForm({
     }
   }
   return (
-    <form onSubmit={addOrder}>
+    <form onSubmit={addOrder} className="cart-items">
       <h3>Checkoutform:</h3>
       <label htmlFor="name">Name: </label>
       <input name="name" type="text" />

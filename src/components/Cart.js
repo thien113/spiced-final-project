@@ -110,8 +110,11 @@ export default function Cart({ products, close, productHandler }) {
 
   return (
     <div className="cart">
-      <h2>Cart</h2>
-      <button onClick={closeCart}>X</button>
+      <div className="cart-items-row">
+        <h2>Cart</h2>
+        <button onClick={closeCart}>X</button>
+      </div>
+
       {products.length === 0 && (
         <div className="cart-items">
           <p>Your cart is empty...</p>
@@ -133,25 +136,26 @@ export default function Cart({ products, close, productHandler }) {
                 <h4>{product.counter} </h4>
                 <h4>{product.name} </h4>
                 <p>{product.price * product.counter} €</p>
-                <div className="cart-items-row">
-                  {product.extras.map((e) => (
-                    <div key={e.value}>
-                      <label htmlFor={e.extra}>{e.extra}</label>
-                      <input
-                        type="checkbox"
-                        name={e.extra}
-                        value={e.price}
-                        onChange={(event) => addExtras(event, product.name)}
-                      />
-                      <div>{e.price} €</div>
-                    </div>
-                  ))}
-                </div>
+              </div>
+              <div className="cart-items">
+                {product.extras.map((e) => (
+                  <div key={e.value} className="cart-items-row">
+                    <label htmlFor={e.extra}>{e.extra}</label>
+
+                    <div>{e.price} €</div>
+                    <input
+                      type="checkbox"
+                      name={e.extra}
+                      value={e.price}
+                      onChange={(event) => addExtras(event, product.name)}
+                    />
+                  </div>
+                ))}
               </div>
             </div>
           ))}
           <hr />
-          <div className="cart-items-row">
+          <div className="cart-items">
             Please select one:
             <input
               type="checkbox"

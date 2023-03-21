@@ -4,8 +4,9 @@ export default function EmailForm({ onSubmit }) {
   }
   return (
     <section className="emailForm">
-      <p>Subscribe and get great offers every day!</p>
       <form onSubmit={handleSubmit}>
+        <p>Subscribe and get great offers every day!</p>
+
         <label htmlFor="name">Name: </label>
         <input type="text" id="name" name="name" />
         <label htmlFor="email">Email: </label>

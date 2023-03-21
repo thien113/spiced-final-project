@@ -67,4 +67,5 @@ const Tab = styled.button`
 `;
 const ButtonGroup = styled.div`
   display: flex;
+  overflow: auto;
 `;

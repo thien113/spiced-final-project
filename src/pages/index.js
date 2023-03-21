@@ -53,11 +53,10 @@ export default function Home() {
           <button className="cover-button">Get delivery</button>
         </div>
       </div>
-      <div className="parallelogram">
+      <Benefits />
+      <div className="yellow">
         <EmailForm onSubmit={handleAddEmailSubscriber} />
       </div>
-
-      <Benefits />
       <Info />
     </main>
   );

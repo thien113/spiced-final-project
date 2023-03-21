@@ -12,7 +12,7 @@ export default function Benefits() {
         nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat,
         sed diam voluptua.
       </p>
-      <ul className="benefit">
+      <div className="benefit">
         <div>
           <Image
             src="/images/com.svg"
@@ -40,7 +40,7 @@ export default function Benefits() {
           />
           <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</p>
         </div>
-      </ul>
+      </div>
     </>
   );
 }
