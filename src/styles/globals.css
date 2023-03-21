@@ -208,3 +208,10 @@ Order Page
   background-color: var(--pink);
   transition-duration: 2s;
 }
+/*
+Map
+*/
+.map {
+  width: 100%;
+  height: 40rem;
+}
