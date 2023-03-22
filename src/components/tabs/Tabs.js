@@ -56,13 +56,15 @@ const Tab = styled.button`
   cursor: pointer;
   opacity: 0.6;
   background: white;
+  color: black;
   border: 0;
   outline: 0;
   ${({ active }) =>
     active &&
     `
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #ff66c4;
     opacity: 1;
+    color: white
   `}
 `;
 const ButtonGroup = styled.div`

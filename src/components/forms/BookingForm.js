@@ -32,15 +32,22 @@ export default function BookingForm({ onSubmit }) {
           <label htmlFor="date">Date: </label>
           <input type="date" id="date" name="date" />
         </fieldset>
-        <input type="checkbox" name="agb" required />
-        <label htmlFor="agb">
-          <Link href="/terms-of-conditions">Terms Of Conditions </Link>
-        </label>
-        <input type="checkbox" name="privacy" required />
-        <label htmlFor="privacy">
-          <Link href="/privacy-policy">Privacy Policy</Link>
-        </label>
-
+        <div className="column">
+          <div className="row">
+            <input type="checkbox" name="agb" required />
+            <label htmlFor="agb">
+              <Link href="/terms-of-conditions">
+                <h6>Terms Of Conditions</h6>{" "}
+              </Link>
+            </label>
+            <input type="checkbox" name="privacy" required />
+            <label htmlFor="privacy">
+              <Link href="/privacy-policy">
+                <h6>Privacy Policy</h6>
+              </Link>
+            </label>
+          </div>
+        </div>
         <button>Book a Table</button>
       </form>
     </section>

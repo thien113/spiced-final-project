@@ -31,7 +31,7 @@ export default function Checkout() {
   }, []);
 
   return (
-    <section className="page-section">
+    <section className="form-section">
       <h2>Checkout for {type.toUpperCase()}</h2>
       <CheckoutForm
         type={type}

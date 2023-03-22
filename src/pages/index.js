@@ -54,9 +54,7 @@ export default function Home() {
         </div>
       </div>
       <Benefits />
-      <div className="yellow">
-        <EmailForm onSubmit={handleAddEmailSubscriber} />
-      </div>
+      <EmailForm onSubmit={handleAddEmailSubscriber} />
       <Info />
     </main>
   );

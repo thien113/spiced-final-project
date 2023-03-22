@@ -45,33 +45,37 @@ export default function CheckoutForm({
     }
   }
   return (
-    <form onSubmit={addOrder} className="cart-items">
-      <h3>Checkoutform:</h3>
-      <label htmlFor="name">Name: </label>
-      <input name="name" type="text" />
-      {type === "delivery" && (
-        <>
-          <label htmlFor="adress">Adress: </label>
-          <input type="text" name="adress" />
-        </>
-      )}
-      <label htmlFor="telephone">Telephone: </label>
-      <input type="text" name="telephone" />
-      <label htmlFor="notes">Notes: </label>
-      <input type="text" name="notes" />
-      {payment && <button>Order</button>}
-
-      <h3>Your Order:</h3>
-      {products.map((p) => (
-        <div key={p.name} className="cart-items">
-          <div className="cart-items-row">
-            <p>{p.counter}</p>
-            <h4>{p.name}</h4>
-            <p>Unit Price: {p.price}</p>
-            <p>Subtotal: {p.price * p.counter} €</p>
+    <form onSubmit={addOrder}>
+      <fieldset>
+        <legend>
+          <h4>Personal Information</h4>
+        </legend>
+        <label htmlFor="name">Name: </label>
+        <input name="name" type="text" />
+        {type === "delivery" && (
+          <>
+            <label htmlFor="adress">Adress: </label>
+            <input type="text" name="adress" />
+          </>
+        )}
+        <label htmlFor="telephone">Telephone: </label>
+        <input type="text" name="telephone" />
+        <label htmlFor="notes">Notes: </label>
+        <input type="text" name="notes" />
+      </fieldset>
+      <fieldset>
+        <legend>
+          <h4>Your Order</h4>
+        </legend>
+        {products.map((p) => (
+          <div key={p.name}>
+            <div className="row">
+              <p>{p.counter}</p>
+              <p>{p.name}</p>
+              <p>Subtotal: {p.price * p.counter} €</p>
+            </div>
             {extras.length > 0 && (
-              <p>
-                Extras:
+              <ul className="column">
                 {extras
                   .find((extra) => extra.name === p.name)
                   .extras.map((e) => (
@@ -79,26 +83,37 @@ export default function CheckoutForm({
                       {e.extra} {e.price} €
                     </li>
                   ))}
-              </p>
+              </ul>
             )}
           </div>
-        </div>
-      ))}
+        ))}
+      </fieldset>
+
       <hr />
       <Payment setPayment={setPayment} payment={payment} />
-      <hr />
-      <input type="checkbox" name="agb" required />
-      <label htmlFor="agb">
-        <Link href="/terms-of-conditions">Terms Of Conditions </Link>
-      </label>
-      <input type="checkbox" name="privacy" required />
-      <label htmlFor="privacy">
-        <Link href="/privacy-policy">Privacy Policy</Link>
-      </label>
-      <hr />
-      <p>Subtotal: {subtotal} €</p>
-      <p>Extrastotal: {extrasTotal} €</p>
-      <h3>Total: {total} €</h3>
+      <div className="column">
+        <div className="row">
+          <input type="checkbox" name="agb" required />
+          <label htmlFor="agb">
+            <Link href="/terms-of-conditions">
+              <h6>Terms Of Conditions</h6>{" "}
+            </Link>
+          </label>
+          <input type="checkbox" name="privacy" required />
+          <label htmlFor="privacy">
+            <Link href="/privacy-policy">
+              <h6>Privacy Policy</h6>
+            </Link>
+          </label>
+        </div>
+      </div>
+      <div className="total-text">
+        <p>Subtotal: {subtotal} €</p>
+        <p>Extrastotal: {extrasTotal} €</p>
+        <hr />
+        <h3>Total: {total} €</h3>
+      </div>
+      {payment && <button>Order</button>}
     </form>
   );
 }

@@ -23,7 +23,7 @@ export default function Booking() {
     }
   }
   return (
-    <section className="page-section">
+    <section className="form-section">
       <h2>Booking</h2>
       <BookingForm onSubmit={handleAddBooking} />
     </section>
