@@ -204,3 +204,111 @@ so I don't have to call
 - [ ] create form
 - [ ] create collection reservation
 - [ ] show aprroval in frontend for now
+
+## User Story 4: Admin Page
+
+## User Story 4.1 Dashboard Page
+
+### Value Proposition
+
+As the Owner I want to see an Admindashboard
+so I can handle the data
+
+### Acceptance Criteria
+
+- [ ] I see a dashboard with my logo, and my restaurant name
+
+### Tasks
+
+- [ ] create a admin folder inside pages
+- [ ] create login page
+- [ ] create dashboard page
+
+## User Story 4.1.1: Tabs inside Dashboard
+
+### Value Proposition
+
+As the Owner I want to see an tabs
+so I can handle all my products, categories, bookings and orders
+
+### Acceptance Criteria
+
+- [ ] I see tabs:
+  - [ ] New!!
+  - [ ] Orders
+  - [ ] Bookings
+  - [ ] Products
+  - [ ] Categories
+
+### Tasks
+
+- [ ] create dashboard component
+  - [ ] create tabs component with
+    - [ ] New!!
+    - [ ] Orders
+    - [ ] Bookings
+    - [ ] Products
+    - [ ] Categories
+- make a db connection and show me all data
+
+## User Story 4.1.2: Tabs inside Dashboard
+
+### Value Proposition
+
+As the Owner I want to see an tabs
+so I can handle all my report, customers, reviews, discount/deals, email-marketing, settings
+
+### Acceptance Criteria
+
+- [ ] I see tabs:
+  - [ ] Report
+  - [ ] customers
+  - [ ] reviews
+  - [ ] discounts/deals
+  - [ ] emails-marketing
+  - [ ] settings
+
+### Tasks
+
+- [ ] create dashboard component
+  - [ ] create tabs component with
+    - [ ] New!!
+    - [ ] Orders
+    - [ ] Bookings
+    - [ ] Products
+    - [ ] Categories
+- make a db connection and show me all data
+
+## User Story 4.2: CUD Methods
+
+### Value Proposition
+
+As the Owner I want to create, update, delete things
+so new things can be shown faster to my website
+
+### Acceptance Criteria
+
+- [ ] cud functions
+- [ ] data is updated on website
+
+### Tasks
+
+- [ ] api calls for cud for the tabs
+
+## User Story 4.3: Auth
+
+### Value Proposition
+
+As the Owner I want to logged in into my dashboard,
+so only I can access it.
+
+### Acceptance Criteria
+
+- [ ] logged in with credentials
+- [ ] next/auth
+
+### Tasks
+
+- [ ] implement next/auth
+- [ ] create collections for credentials, hard code credentials
+- [ ] show admin page session===authenticated
