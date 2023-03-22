@@ -1,10 +1,14 @@
 export default function Card({ product, productHandler }) {
   return (
     <div key={product._id}>
-      <h3>{product.name}</h3>
+      <div className="row">
+        <h3>{product.name}</h3>
+        <button onClick={() => productHandler(product, "plus")}> + </button>
+      </div>
+
       <p>{product.description}</p>
       <span>{product.price} €</span>
-      <button onClick={() => productHandler(product, "plus")}> + </button>
+      <hr />
     </div>
   );
 }

@@ -9,7 +9,6 @@ export default function Order() {
   const [cartActive, setCartActive] = useState(false);
 
   function productToCardHandler(product, operator) {
-    setCartActive(true);
     if (products.some((p) => p.name === product.name)) {
       const currentProduct = products.find((p) => p.name === product.name);
       const updatedProduct = {
@@ -22,9 +21,7 @@ export default function Order() {
         extras: [...currentProduct.extras],
       };
       // filter products except the updated one
-      const oldProducts = products.filter(
-        (p) => p.name != product.name && product.counter > 0
-      );
+      const oldProducts = products.filter((p) => p.name != product.name);
       // then via spreadoperator [...oldProducts, updatedProduct]
       const newProducts =
         updatedProduct.counter <= 0
@@ -46,15 +43,13 @@ export default function Order() {
 
   return (
     <section className="page-section order-page">
-      <h2>Order</h2>
-      <Image
-        onClick={() => setCartActive(!cartActive)}
-        className="cart-logo"
-        src="/images/cart.svg"
-        height={80}
-        width={80}
-        alt="cart logo"
-      />
+      <div className="row">
+        <h2>Order</h2>
+        <div onClick={() => setCartActive(!cartActive)}>
+          <h4>🛒{products.length}</h4>
+        </div>
+      </div>
+
       <hr />
       {cartActive && (
         <Cart

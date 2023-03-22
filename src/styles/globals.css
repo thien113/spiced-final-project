@@ -34,6 +34,7 @@ main {
   padding: 10px;
 }
 hr {
+  margin-bottom: 30px;
   color: var(--pink);
 }
 /*
@@ -218,10 +219,10 @@ Order Page
 .cart {
   position: absolute;
   background-color: white;
-  padding: 10px;
-  border: solid;
+  padding: 20px;
+  border: 1px solid;
   border-radius: 20px;
-  box-shadow: 5px 10px var(--pink);
+  box-shadow: 10px 5px 5px var(--pink);
   top: 50;
   right: 0;
   z-index: 2;
@@ -235,6 +236,8 @@ Order Page
 .row {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
   margin: 20px 0;
   gap: 20px;
   text-align: left;
@@ -277,4 +280,7 @@ Map
 .total-text {
   text-align: end;
   margin: 20px 0;
+}
+.width-100 {
+  width: 100%;
 }
