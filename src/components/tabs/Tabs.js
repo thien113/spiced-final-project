@@ -20,7 +20,7 @@ export default function Tabs({ productHandler }) {
 
   return (
     <>
-      <ButtonGroup>
+      <ButtonGroup className="overflow">
         {types.map((c) => (
           <Tab key={c} active={active === c} onClick={() => setActive(c)}>
             {c}
@@ -64,10 +64,8 @@ const Tab = styled.button`
     `
     border-bottom: 2px solid #ff66c4;
     opacity: 1;
-    color: white
   `}
 `;
 const ButtonGroup = styled.div`
   display: flex;
-  overflow: auto;
 `;
