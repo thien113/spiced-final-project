@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import Map from "../components/Map";
+import Map from "../components/map";
 
 export default function OverviewPage() {
   const router = useRouter();
