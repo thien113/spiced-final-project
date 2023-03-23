@@ -51,6 +51,7 @@ nav > a {
   color: var(--pink);
   font-family: "prompt";
   text-decoration: none;
+  margin: 0 20px;
 }
 nav > a:hover {
   color: #fc009b;
