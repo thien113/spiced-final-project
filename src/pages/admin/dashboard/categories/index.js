@@ -1,9 +1,14 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import AdminLayout from "@/src/components/admin/layout";
+import AdminLayout from "@/src/components/admin/Layout";
 import useSWR from "swr";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
+import CategoryCreateForm from "@/src/components/admin/form/category/CategoryCreateForm";
 
 export default function DashboardCategories() {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
   const { data, isLoading } = useSWR("/api/categories");
 
   if (!data) return;
@@ -11,7 +16,36 @@ export default function DashboardCategories() {
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
-  console.log(data);
+  async function handleCreateCategory(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const categoryData = Object.fromEntries(formData);
+
+    const response = await fetch("/api/categories", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(categoryData),
+    });
+
+    if (response.ok) {
+      event.target.reset();
+      router.push("/admin/dashboard/categories");
+    } else {
+      console.error(response.status);
+    }
+  }
+
+  async function handleDelete(id) {
+    const response = await fetch(`/api/categories/${id}`, { method: "DELETE" });
+    if (response.ok) {
+      router.push("/admin/dashboard/categories");
+    } else {
+      console.log(response.status);
+    }
+  }
   return (
     <section className="page-section">
       <AdminLayout />
@@ -19,12 +53,30 @@ export default function DashboardCategories() {
         <DashboardTabs />
         <div className="column">
           <h3>Categories</h3>
+          <button
+            onClick={() => {
+              setOpen(!open);
+            }}
+          >
+            Create New Category
+          </button>
+          {open && <CategoryCreateForm onSubmit={handleCreateCategory} />}
           {data.map((d) => (
-            <Link href={`/admin/dashboard/categories/${d._id}`}>
+            <>
               <div className="row">
                 <h4>Category: {d.name}</h4>
               </div>
-            </Link>
+              <Link href={`/admin/dashboard/categories/${d._id}`}>
+                <button>Update</button>
+              </Link>
+              <button
+                onClick={() => {
+                  handleDelete(d._id);
+                }}
+              >
+                Delete
+              </button>
+            </>
           ))}
         </div>
       </div>

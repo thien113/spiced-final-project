@@ -1,7 +1,6 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import AdminLayout from "@/src/components/admin/layout";
+import AdminLayout from "@/src/components/admin/Layout";
 import useSWR from "swr";
-import Link from "next/link";
 
 export default function DashboardBookings() {
   const { data, isLoading } = useSWR("/api/bookings");
@@ -20,7 +19,7 @@ export default function DashboardBookings() {
           <h3>Bookings</h3>
 
           {data.map((d) => (
-            <Link href={`/admin/dashboard/bookings/${d._id}`}>
+            <>
               <div className="row">
                 <h4>Date: {d.date}</h4>
                 <p>Name: {d.name}</p>
@@ -28,7 +27,7 @@ export default function DashboardBookings() {
                 <p>Telephone: # {d.telephone}</p>
                 <p>People: # {d.people}</p>
               </div>
-            </Link>
+            </>
           ))}
         </div>
       </div>

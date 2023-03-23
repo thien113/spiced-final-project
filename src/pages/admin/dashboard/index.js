@@ -1,4 +1,4 @@
-import AdminLayout from "@/src/components/admin/layout";
+import AdminLayout from "@/src/components/admin/Layout";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 export default function Dashboard() {
   return (

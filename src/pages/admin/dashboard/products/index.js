@@ -1,9 +1,13 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import AdminLayout from "@/src/components/admin/layout";
+import AdminLayout from "@/src/components/admin/Layout";
 import useSWR from "swr";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function DashboardProducts() {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
   const { data, isLoading } = useSWR("/api/products");
 
   if (!data) return;
@@ -11,7 +15,35 @@ export default function DashboardProducts() {
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
-  console.log(data);
+  async function handleCreateProduct(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const productData = Object.fromEntries(formData);
+
+    const response = await fetch("/api/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(productData),
+    });
+
+    if (response.ok) {
+      event.target.reset();
+      router.push("/admin/dashboard/products");
+    } else {
+      console.error(response.status);
+    }
+  }
+  async function handleDelete(id) {
+    const response = await fetch(`/api/products/${id}`, { method: "DELETE" });
+    if (response.ok) {
+      router.push("/admin/dashboard/products");
+    } else {
+      console.log(response.status);
+    }
+  }
   return (
     <section className="page-section">
       <AdminLayout />
@@ -20,7 +52,7 @@ export default function DashboardProducts() {
         <div className="column">
           <h3>Products</h3>
           {data.map((d) => (
-            <Link href={`/admin/dashboard/products/${d._id}`}>
+            <>
               <div className="row">
                 <h4>{d.name}</h4>
                 <p>Description: {d.description}</p>
@@ -33,8 +65,18 @@ export default function DashboardProducts() {
                     {e.extra}: {e.price} €
                   </h6>
                 ))}
+                <Link href={`/admin/dashboard/products/${d._id}`}>
+                  <button>Update</button>
+                </Link>
+                <button
+                  onClick={() => {
+                    handleDelete(d._id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
-            </Link>
+            </>
           ))}
         </div>
       </div>
