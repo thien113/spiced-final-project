@@ -28,6 +28,8 @@ const orderSchema = new Schema({
   subtotal: { type: Number },
   extrasTotal: { type: Number },
   total: { type: Number },
+  created: { type: Date, default: Date.now },
+  confirmed: { type: Boolean, default: false },
 });
 
 const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);

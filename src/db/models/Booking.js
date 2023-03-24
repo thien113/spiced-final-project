@@ -8,6 +8,7 @@ const bookingSchema = new Schema({
   people: { type: Number },
   time: { type: String },
   date: { type: String },
+  created: { type: Date, default: Date.now },
 });
 
 const Booking =
