@@ -11,7 +11,7 @@ export default function Home() {
     const formData = new FormData(event.target);
     const emailData = Object.fromEntries(formData);
 
-    const response = await fetch("/api/email", {
+    const response = await fetch("/api/emails", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

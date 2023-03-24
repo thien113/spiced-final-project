@@ -1,12 +1,10 @@
-import AdminLayout from "@/src/components/admin/Layout";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import { useRouter } from "next/router";
-import useSWR from "swr";
+import AdminLayout from "@/src/components/admin/Layout";
+//import useSWR from "swr";
 
-export default function OrderDetails() {
-  const router = useRouter();
-  const { id } = router.query;
-  const { data, isLoading } = useSWR(id ? `/api/orders/${id}` : null);
+export default function DashboardReports() {
+  /* const { data, isLoading } = useSWR("/api/emails");
+
   if (!data) return;
 
   if (isLoading) {
@@ -19,13 +17,15 @@ export default function OrderDetails() {
         </div>
       </section>
     );
-  }
-
+  }*/
   return (
     <section className="page-section">
       <AdminLayout />
       <div className="row">
         <DashboardTabs />
+        <div className="column">
+          <h3>Reports</h3>
+        </div>
       </div>
     </section>
   );

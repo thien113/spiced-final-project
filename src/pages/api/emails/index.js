@@ -3,6 +3,10 @@ import Email from "../../../db/models/Email";
 
 export default async function handler(request, response) {
   await dbConnect();
+  if (request.method === "GET") {
+    const emails = await Email.find();
+    return response.status(200).json(emails);
+  }
   if (request.method === "POST") {
     try {
       const emailData = request.body;

@@ -8,7 +8,15 @@ export default function DashboardBookings() {
   if (!data) return;
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <section className="page-section">
+        <AdminLayout />
+        <div className="row">
+          <DashboardTabs />
+          <h2>Loading...</h2>
+        </div>
+      </section>
+    );
   }
   return (
     <section className="page-section">
