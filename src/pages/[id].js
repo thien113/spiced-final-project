@@ -7,7 +7,6 @@ export default function OverviewPage() {
   const { id } = router.query;
 
   const { data, isLoading } = useSWR(id ? `/api/orders/${id}` : null);
-  console.log("data:", data);
   if (!data) return;
 
   if (isLoading) {

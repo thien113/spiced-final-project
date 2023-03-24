@@ -10,12 +10,10 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "POST") {
-    console.log("inside method post of orders index");
     try {
       const orderData = request.body;
       const order = new Order(orderData);
       const createdOrder = await order.save();
-      console.log("createdOrder:", createdOrder);
 
       return response.status(201).json(createdOrder);
     } catch (error) {

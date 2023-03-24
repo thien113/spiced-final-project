@@ -4,6 +4,7 @@ import useSWR from "swr";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import ProductCreateForm from "@/src/components/admin/form/product/ProductCreateForm";
 
 export default function DashboardProducts() {
   const router = useRouter();
@@ -51,13 +52,21 @@ export default function DashboardProducts() {
         <DashboardTabs />
         <div className="column">
           <h3>Products</h3>
+          <button
+            onClick={() => {
+              setOpen(!open);
+            }}
+          >
+            Create New Category
+          </button>
+          {open && <ProductCreateForm onSubmit={handleCreateProduct} />}
           {data.map((d) => (
             <>
               <div className="row">
                 <h4>{d.name}</h4>
                 <p>Description: {d.description}</p>
-                <strong>Price: {d.price}</strong>
-                <p>Category: {d.category} €</p>
+                <strong>Price: {d.price}€</strong>
+                <p>Category: {d.category} </p>
               </div>
               <div className="row">
                 {d.extras.map((e) => (

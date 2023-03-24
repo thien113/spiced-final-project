@@ -1,13 +1,16 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
-
+const ExtrasProductSchema = mongoose.Schema({
+  extra: { type: String },
+  price: { type: Number },
+});
 const productSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String, required: true },
   price: { type: Number, required: true },
-  image: { type: String, required: true },
+  image: { type: String },
   inStock: { type: Boolean },
-  extras: { type: Array },
+  extras: [{ type: ExtrasProductSchema }],
   category: { type: String },
 });
 
