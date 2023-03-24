@@ -3,12 +3,15 @@ import AdminLayout from "@/src/components/admin/Layout";
 import useSWR from "swr";
 import DealCreateForm from "@/src/components/admin/form/deal/DealCreateForm";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function DashboardDeals() {
-  //const { data, isLoading } = useSWR("/api/deals");
+  const { data, isLoading } = useSWR("/api/deals");
+  const router = useRouter();
   const [open, setOpen] = useState(false);
 
-  /*if (!data) return;
+  if (!data) return;
 
   if (isLoading) {
     return (
@@ -20,7 +23,7 @@ export default function DashboardDeals() {
         </div>
       </section>
     );
-  }*/
+  }
   async function handleCreateDeal(event) {
     event.preventDefault();
 
@@ -66,6 +69,27 @@ export default function DashboardDeals() {
             Create New Deal
           </button>
           {open && <DealCreateForm onSubmit={handleCreateDeal} />}
+          {data.map((d) => (
+            <>
+              <div className="row">
+                <h4>Deals: {d.code}</h4>
+                <p>Discount: {d.discount}</p>
+                <p>
+                  Start: {d.start}- {d.end}
+                </p>
+              </div>
+              <Link href={`/admin/dashboard/deals/${d._id}`}>
+                <button>Update</button>
+              </Link>
+              <button
+                onClick={() => {
+                  handleDelete(d._id);
+                }}
+              >
+                Delete
+              </button>
+            </>
+          ))}
         </div>
       </div>
     </section>

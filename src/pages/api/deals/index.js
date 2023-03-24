@@ -12,7 +12,7 @@ export default async function handler(request, response) {
   if (request.method === "POST") {
     try {
       const dealData = request.body;
-      const deal = new Category(dealData);
+      const deal = new Deal(dealData);
       await deal.save();
 
       response.status(201).json({ status: "Deal created" });
