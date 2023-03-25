@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Header() {
+  const { data: session } = useSession();
   return (
     <header>
       <Link href="/">
@@ -18,6 +20,7 @@ export default function Header() {
         <Link href="/order">Order </Link>
         <Link href="/booking">Booking </Link>
         <Link href="/about-us">About </Link>
+        {session && <button onClick={() => signOut()}>Sign Out</button>}
       </nav>
     </header>
   );

@@ -1,8 +1,9 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import AdminLayout from "@/src/components/admin/Layout";
 import useSWR from "swr";
+import { hasToken } from "../../checkUser";
 
-export default function DashboardEmails() {
+function DashboardEmails() {
   const { data, isLoading } = useSWR("/api/emails");
 
   if (!data) return;
@@ -38,4 +39,19 @@ export default function DashboardEmails() {
       </div>
     </section>
   );
+}
+export default DashboardEmails;
+
+export async function getServerSideProps(context) {
+  const token = await hasToken(context.req);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
 }

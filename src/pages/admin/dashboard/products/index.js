@@ -5,8 +5,9 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import ProductCreateForm from "@/src/components/admin/form/product/ProductCreateForm";
+import { hasToken } from "../../checkUser";
 
-export default function DashboardProducts() {
+function DashboardProducts() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const { data, isLoading } = useSWR("/api/products");
@@ -99,4 +100,18 @@ export default function DashboardProducts() {
       </div>
     </section>
   );
+}
+export default DashboardProducts;
+export async function getServerSideProps(context) {
+  const token = await hasToken(context.req);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
 }

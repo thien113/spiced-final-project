@@ -5,8 +5,9 @@ import DealCreateForm from "@/src/components/admin/form/deal/DealCreateForm";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { hasToken } from "../../checkUser";
 
-export default function DashboardDeals() {
+function DashboardDeals() {
   const { data, isLoading } = useSWR("/api/deals");
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -94,4 +95,18 @@ export default function DashboardDeals() {
       </div>
     </section>
   );
+}
+export default DashboardDeals;
+export async function getServerSideProps(context) {
+  const token = await hasToken(context.req);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
 }

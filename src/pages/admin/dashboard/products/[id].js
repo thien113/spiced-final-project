@@ -3,8 +3,9 @@ import AdminLayout from "@/src/components/admin/Layout";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import { hasToken } from "../../checkUser";
 
-export default function ProductDetails() {
+function ProductDetails() {
   const router = useRouter();
   const { id } = router.query;
   const { data, isLoading } = useSWR(id ? `/api/products/${id}` : null);
@@ -52,4 +53,18 @@ export default function ProductDetails() {
       </div>
     </section>
   );
+}
+export default ProductDetails;
+export async function getServerSideProps(context) {
+  const token = await hasToken(context.req);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
 }

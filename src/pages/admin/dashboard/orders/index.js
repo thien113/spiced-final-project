@@ -3,7 +3,7 @@ import AdminLayout from "@/src/components/admin/Layout";
 import useSWR from "swr";
 import Link from "next/link";
 
-export default function DashboardOrders() {
+function DashboardOrders() {
   const { data, isLoading } = useSWR("/api/orders");
 
   if (!data) return;
@@ -40,4 +40,18 @@ export default function DashboardOrders() {
       </div>
     </section>
   );
+}
+export default DashboardOrders;
+export async function getServerSideProps(context) {
+  const token = await hasToken(context.req);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
 }

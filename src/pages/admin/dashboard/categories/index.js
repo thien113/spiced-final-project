@@ -5,8 +5,9 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import CategoryCreateForm from "@/src/components/admin/form/category/CategoryCreateForm";
+import { hasToken } from "../../checkUser";
 
-export default function DashboardCategories() {
+function DashboardCategories() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const { data, isLoading } = useSWR("/api/categories");
@@ -90,4 +91,18 @@ export default function DashboardCategories() {
       </div>
     </section>
   );
+}
+export default DashboardCategories;
+export async function getServerSideProps(context) {
+  const token = await hasToken(context.req);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return { props: {} };
 }
