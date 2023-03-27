@@ -3,9 +3,9 @@ import AdminLayout from "@/src/components/admin/Layout";
 import useSWR from "swr";
 import { hasToken } from "../../checkUser";
 import DatePicker from "react-datepicker";
-
 import "react-datepicker/dist/react-datepicker.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import DateFormatter from "../utils/dateformatter";
 
 function DashboardBookings() {
   const { data, isLoading } = useSWR("/api/bookings");
@@ -24,10 +24,7 @@ function DashboardBookings() {
       </section>
     );
   }
-  const day = ("0" + startDate.getDate()).slice(-2);
-  const month = ("0" + (startDate.getMonth() + 1)).slice(-2);
-  const year = startDate.getFullYear();
-  const dateToFilter = `${year}-${month}-${day}`;
+  const dateToFilter = DateFormatter(startDate);
   const filteredData = data?.filter((data) => data.date === dateToFilter);
 
   return (
