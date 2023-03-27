@@ -6,8 +6,9 @@ export default function Booking() {
 
     const formData = new FormData(event.target);
     const emailData = Object.fromEntries(formData);
+    console.log("emailData", emailData);
 
-    const response = await fetch("/api/booking", {
+    const response = await fetch("/api/bookings", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

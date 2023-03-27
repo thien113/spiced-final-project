@@ -20,11 +20,11 @@ export default function BookingForm({ onSubmit }) {
           <legend>Reservation</legend>
           <label htmlFor="people">Number of People: </label>
           <input type="number" id="people" name="people" />
-          <label htmlFor="app-time">Time: </label>
+          <label htmlFor="time">Time: </label>
           <input
-            id="appt-time"
+            id="time"
             type="time"
-            name="appt-time"
+            name="time"
             min="12:00"
             max="22:00"
             required
