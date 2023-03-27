@@ -2,9 +2,15 @@ import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import AdminLayout from "@/src/components/admin/Layout";
 import { hasToken } from "../../checkUser";
 //import useSWR from "swr";
+/*import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
+import DateFormatter from "../utils/dateformatter";*/
 
 function DashboardReviews() {
   /* const { data, isLoading } = useSWR("/api/emails");
+  const [startDate, setStartDate] = useState(new Date());
+
 
   if (!data) return;
 
@@ -18,7 +24,12 @@ function DashboardReviews() {
         </div>
       </section>
     );
-  }*/
+  }
+  const dateToFilter = DateFormatter(startDate);
+  const filteredData = data?.filter(
+    (d) => d.created.slice(0, 10) === dateToFilter
+  );
+  */
   return (
     <section className="page-section">
       <AdminLayout />
