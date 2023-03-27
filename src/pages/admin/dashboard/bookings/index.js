@@ -2,9 +2,14 @@ import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import AdminLayout from "@/src/components/admin/Layout";
 import useSWR from "swr";
 import { hasToken } from "../../checkUser";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import { useEffect, useState } from "react";
 
 function DashboardBookings() {
   const { data, isLoading } = useSWR("/api/bookings");
+  const [startDate, setStartDate] = useState(new Date());
 
   if (!data) return;
 
@@ -19,6 +24,12 @@ function DashboardBookings() {
       </section>
     );
   }
+  const day = ("0" + startDate.getDate()).slice(-2);
+  const month = ("0" + (startDate.getMonth() + 1)).slice(-2);
+  const year = startDate.getFullYear();
+  const dateToFilter = `${year}-${month}-${day}`;
+  const filteredData = data?.filter((data) => data.date === dateToFilter);
+
   return (
     <section className="page-section">
       <AdminLayout />
@@ -26,8 +37,12 @@ function DashboardBookings() {
         <DashboardTabs />
         <div className="column">
           <h3>Bookings</h3>
+          <DatePicker
+            selected={startDate}
+            onChange={(date) => setStartDate(date)}
+          />
 
-          {data.map((d) => (
+          {filteredData.map((d) => (
             <>
               <div className="row">
                 <h4>Date: {d.date}</h4>
