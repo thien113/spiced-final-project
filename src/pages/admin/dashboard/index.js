@@ -4,6 +4,8 @@ import { hasToken } from "../checkUser";
 import DeliveryOrder from "@/src/components/admin/order/DeliveryOrder";
 import Booking from "@/src/components/admin/order/Booking";
 import PickUpOrder from "@/src/components/admin/order/PickUpOrder";
+import OrderInKitchen from "@/src/components/admin/order/OrderInKitchen";
+import OrderOnTheWay from "@/src/components/admin/order/OrderOnTheWay";
 
 function Dashboard() {
   return (
@@ -15,9 +17,10 @@ function Dashboard() {
           <DeliveryOrder />
           <PickUpOrder />
           <Booking />
-        </div>
-        <div className="row">
-          <div className="column"></div>
+          <div className="row">
+            <OrderInKitchen />
+            <OrderOnTheWay />
+          </div>
         </div>
       </div>
     </section>
