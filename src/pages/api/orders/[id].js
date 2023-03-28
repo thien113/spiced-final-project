@@ -14,4 +14,21 @@ export default async function OrdersDetails(request, response) {
 
     response.status(200).json(order);
   }
+  if (request.method === "PUT") {
+    try {
+      await Order.findByIdAndUpdate(id, {
+        $set: {
+          confirmed: true,
+          status: request.body.status,
+          time: request.body.time,
+        },
+      });
+      response
+        .status(200)
+        .json({ status: "Product Extra successfully updated" });
+    } catch (error) {
+      console.log(error);
+      response.status(400).json({ error: error.message });
+    }
+  }
 }

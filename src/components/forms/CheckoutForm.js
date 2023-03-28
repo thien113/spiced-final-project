@@ -28,6 +28,7 @@ export default function CheckoutForm({
       subtotal: subtotal,
       extrasTotal: extrasTotal,
       extras: [...extras],
+      status: "new",
     };
     const response = await fetch("/api/orders", {
       method: "POST",

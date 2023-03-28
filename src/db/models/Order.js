@@ -30,6 +30,8 @@ const orderSchema = new Schema({
   total: { type: Number },
   created: { type: Date, default: Date.now },
   confirmed: { type: Boolean, default: false },
+  status: { type: String, default: "unconfirmed" },
+  time: { type: String },
 });
 
 const Order = mongoose.models.Order || mongoose.model("Order", orderSchema);

@@ -1,10 +1,9 @@
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import Routing from "./Routing";
 import useGeolocation from "./useGeolocation";
-import { useEffect, useState } from "react";
 
 export default function Map() {
   const position = [52.51715, 13.4288];

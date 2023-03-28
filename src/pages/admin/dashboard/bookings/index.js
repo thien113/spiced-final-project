@@ -25,7 +25,9 @@ function DashboardBookings() {
     );
   }
   const dateToFilter = DateFormatter(startDate);
-  const filteredData = data?.filter((data) => data.date === dateToFilter);
+  const filteredData = data?.filter(
+    (data) => data.date === dateToFilter && data.status === "accepted"
+  );
 
   return (
     <section className="page-section">

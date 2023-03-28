@@ -66,7 +66,7 @@ function DashboardProducts() {
               setOpen(!open);
             }}
           >
-            Create New Category
+            Create New Product
           </button>
           {open && <ProductCreateForm onSubmit={handleCreateProduct} />}
           {data.map((d) => (

@@ -8,6 +8,8 @@ const bookingSchema = new Schema({
   people: { type: Number },
   time: { type: String },
   date: { type: String },
+  confirmed: { type: Boolean, default: false },
+  status: { type: String, default: "unconfirmed" },
   created: { type: Date, default: Date.now },
 });
 
