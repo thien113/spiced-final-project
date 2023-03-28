@@ -47,7 +47,7 @@ export default function PickUpOrder() {
   return (
     <article>
       {filteredOrderData.map((d) => (
-        <>
+        <div key={d._id}>
           <h3>New Order!!!</h3>
           <strong>For: {d.type.toUpperCase()}</strong> <br />
           <p>Name: {d.name}</p>
@@ -82,7 +82,7 @@ export default function PickUpOrder() {
               </button>
             </div>
           </ul>
-        </>
+        </div>
       ))}
     </article>
   );

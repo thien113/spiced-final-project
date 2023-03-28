@@ -47,7 +47,7 @@ export default function DeliveryOrder() {
   return (
     <article>
       {filteredOrderData.map((d) => (
-        <>
+        <div key={d._id}>
           <h3>New Order!!!</h3>
           <strong>For: {d.type.toUpperCase()}</strong> <br />
           <p>Name: {d.name}</p>
@@ -83,7 +83,7 @@ export default function DeliveryOrder() {
               </button>
             </div>
           </ul>
-        </>
+        </div>
       ))}
     </article>
   );

@@ -45,7 +45,7 @@ export default function OrderOnTheWay() {
       <h3>On The Way</h3>
       {filteredOrderData.length === 0 && <h4>No Order on the way</h4>}
       {filteredOrderData.map((d) => (
-        <>
+        <div key={d._id}>
           <strong>For: {d.type.toUpperCase()}</strong> <br />
           <p>Name: {d.name}</p>
           {d.adress && <p>{d.adress}</p>}
@@ -53,7 +53,7 @@ export default function OrderOnTheWay() {
           <p>List of Items:</p>
           <ul>
             {d.products.map((p) => (
-              <li>
+              <li key={p._id}>
                 <strong>
                   Product: {p.name} | Amount: {p.counter} | Subtotal:{" "}
                   {p.counter * p.price}€ <br />
@@ -62,7 +62,7 @@ export default function OrderOnTheWay() {
                 {d.extras
                   .filter((e) => e.extra === p.name)
                   .map((e) => (
-                    <i>
+                    <i key={e._id}>
                       ---- {e.name} - {e.price}
                     </i>
                   ))}
@@ -74,7 +74,7 @@ export default function OrderOnTheWay() {
               </button>
             </div>
           </ul>
-        </>
+        </div>
       ))}
     </article>
   );

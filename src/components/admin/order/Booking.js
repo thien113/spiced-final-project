@@ -42,7 +42,7 @@ export default function Booking({ bookings }) {
   return (
     <>
       {filteredBookingData.map((b) => (
-        <>
+        <div key={b._id}>
           <h3>New Booking!</h3>
           <p>Name: {b.name}</p>
           <p>Date: {b.date}</p>
@@ -55,7 +55,7 @@ export default function Booking({ bookings }) {
             <button onClick={() => confirm(b._id, "accepted")}>Confirm</button>
             <button onClick={() => confirm(b._id, "declined")}>Decline</button>
           </div>
-        </>
+        </div>
       ))}
     </>
   );

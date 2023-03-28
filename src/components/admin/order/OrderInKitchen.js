@@ -45,14 +45,14 @@ export default function OrderInKitchen() {
       <h3>In the kitchen</h3>
       {filteredOrderData.length === 0 && <h4>No Order in Kitchen</h4>}
       {filteredOrderData.map((d) => (
-        <>
+        <div key={d._id}>
           <strong>For: {d.type.toUpperCase()}</strong> <br />
           <p>Name: {d.name}</p>
           <p>Telephone: {d.telephone}</p>
           <p>List of Items:</p>
           <ul>
             {d.products.map((p) => (
-              <li>
+              <li key={p._id}>
                 <strong>
                   Product: {p.name} | Amount: {p.counter} | Subtotal:{" "}
                   {p.counter * p.price}€ <br />
@@ -61,7 +61,7 @@ export default function OrderInKitchen() {
                 {d.extras
                   .filter((e) => e.extra === p.name)
                   .map((e) => (
-                    <i>
+                    <i key={e._id}>
                       ---- {e.name} - {e.price}
                     </i>
                   ))}
@@ -73,7 +73,7 @@ export default function OrderInKitchen() {
               </button>
             </div>
           </ul>
-        </>
+        </div>
       ))}
     </article>
   );
