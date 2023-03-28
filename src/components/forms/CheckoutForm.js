@@ -14,7 +14,7 @@ export default function CheckoutForm({
 }) {
   const router = useRouter();
   const [payment, setPayment] = useState("");
-
+  console.log("checkoutform extras", extras);
   async function addOrder(event) {
     event.preventDefault();
 
@@ -78,8 +78,8 @@ export default function CheckoutForm({
             {extras.length > 0 && (
               <ul className="column">
                 {extras
-                  .find((extra) => extra.name === p.name)
-                  .extras.map((e) => (
+                  .find(({ name }) => name === p.name)
+                  ?.extras?.map((e) => (
                     <li key={e.name}>
                       {e.extra} {e.price} €
                     </li>

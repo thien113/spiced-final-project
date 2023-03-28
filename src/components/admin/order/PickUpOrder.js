@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import { useState } from "react";
-import DateFormatter from "@/src/pages/admin/dashboard/utils/dateformatter";
+import DateFormatter from "@/src/components/admin/utils/dateformatter";
 
 export default function PickUpOrder() {
   const { data: orderData, isLoading: orderLoading } = useSWR("/api/orders");

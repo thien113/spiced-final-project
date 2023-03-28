@@ -6,7 +6,7 @@ import { hasToken } from "../../checkUser";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";
-import DateFormatter from "../utils/dateformatter";
+import DateFormatter from "../../../../components/admin/utils/dateformatter";
 
 function DashboardOrders() {
   const { data, isLoading } = useSWR("/api/orders");

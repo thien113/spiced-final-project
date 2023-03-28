@@ -30,6 +30,7 @@ export default function Checkout() {
     setTotal(total);
   }, []);
 
+  console.log("extras after getting from session", extras);
   return (
     <section className="form-section">
       <h2>Checkout for {type.toUpperCase()}</h2>
