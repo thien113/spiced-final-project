@@ -16,7 +16,9 @@ function Dashboard() {
           <PickUpOrder />
           <Booking />
         </div>
-        <div className="row"></div>
+        <div className="row">
+          <div className="column"></div>
+        </div>
       </div>
     </section>
   );
