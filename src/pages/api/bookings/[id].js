@@ -6,7 +6,6 @@ export default async function OrdersDetails(request, response) {
   const { id } = request.query;
 
   if (request.method === "PUT") {
-    console.log(request.body);
     try {
       await Booking.findByIdAndUpdate(id, {
         $set: { confirmed: true, status: request.body },

@@ -2,7 +2,6 @@ export default function DealUpdateForm({ deal, onSubmit }) {
   async function handleSubmit(event) {
     onSubmit(event);
   }
-  console.log(deal);
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="code">Code:</label>

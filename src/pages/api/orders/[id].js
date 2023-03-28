@@ -16,7 +16,6 @@ export default async function OrdersDetails(request, response) {
   }
   if (request.method === "PUT") {
     const currentOrder = await Order.findById(id);
-    console.log("request body status", request.body.status);
     try {
       await Order.findByIdAndUpdate(id, {
         $set: {

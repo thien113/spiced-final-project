@@ -15,94 +15,91 @@ export default function OverviewPage() {
   const extras = data.extras;
   const productsCost = data.products.map((p) => p.price * p.counter);
 
-  //random time creator
-  function randomTime(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  const deliveryTime = randomTime(30, 60);
-  const pickupTime = randomTime(5, 15);
-
-  //geolocation
-
   return (
     <section className="page-section">
-      <h2>
-        Overview: Your Order is ready in{" "}
-        {data.type === "delivery" && <strong>{deliveryTime}</strong>}
-        {data.type === "pickup" && <strong>{pickupTime}</strong>} min!
-      </h2>
-      {data.type === "delivery" && <Map />}
-      <h4>For {data.type}:</h4>
-      <ul>
-        <li>Name: {data.name}</li>
-        {data.adress && <li>Adress: {data.adress}</li>}
-        <li>TelePhone:{data.telephone}</li>
-        <li>Total: {data.total}€</li>
-      </ul>
-      <h4>Your Order</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>Product</th>
-            <th>Price per Product</th>
-            <th>Amount</th>
-            <th>Subtotal</th>
+      {!data.confirmed && <h2>Wait until your order is confirmed</h2>}
+      {data.confirmed && (
+        <>
+          <h2>
+            Overview: Your Order is ready in {<strong>{data.time}</strong>} min!
+          </h2>
+          <p>Status: {data.status}</p>
+          {data.type === "delivery" && <Map />}
+          <h4>For {data.type}:</h4>
+          <ul>
+            <li>Name: {data.name}</li>
+            {data.adress && <li>Adress: {data.adress}</li>}
+            <li>TelePhone:{data.telephone}</li>
+            <li>Total: {data.total}€</li>
+          </ul>
+          <h4>Your Order</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price per Product</th>
+                <th>Amount</th>
+                <th>Subtotal</th>
 
-            {extras.length > 0 && <th>Extras</th>}
-            {extras.length > 0 && <th>Extrastotal</th>}
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              {data.products.map((p) => (
-                <p key={p.name}> {p.name}</p>
-              ))}
-            </td>
-            <td>
-              {data.products.map((p) => (
-                <p key={p.name}> {p.price} €</p>
-              ))}
-            </td>
-            <td>
-              {data.products.map((p) => (
-                <p key={p.name}>{p.counter}</p>
-              ))}
-            </td>
-            <td>
-              {productsCost.map((c) => (
-                <p key={c}>{c} €</p>
-              ))}
-            </td>
-            {extras.length > 0 && (
-              <td>
-                {extras.map((e) => (
-                  <p key={e.name}>
-                    {e.extras.map((a) => (
-                      <li key={a.extra}>{a.extra}</li>
+                {extras.length > 0 && <th>Extras</th>}
+                {extras.length > 0 && <th>Extrastotal</th>}
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  {data.products.map((p) => (
+                    <p key={p.name}> {p.name}</p>
+                  ))}
+                </td>
+                <td>
+                  {data.products.map((p) => (
+                    <p key={p.name}> {p.price} €</p>
+                  ))}
+                </td>
+                <td>
+                  {data.products.map((p) => (
+                    <p key={p.name}>{p.counter}</p>
+                  ))}
+                </td>
+                <td>
+                  {productsCost.map((c) => (
+                    <p key={c}>{c} €</p>
+                  ))}
+                </td>
+                {extras.length > 0 && (
+                  <td>
+                    {extras.map((e) => (
+                      <p key={e.name}>
+                        {e.extras.map((a) => (
+                          <li key={a.extra}>{a.extra}</li>
+                        ))}
+                      </p>
                     ))}
-                  </p>
-                ))}
-              </td>
-            )}
-            {extras.length > 0 && (
-              <th>
-                {extras.map((e) => (
-                  <p key={e.name}>
-                    {e.extras.reduce((total, a) => a.price + total, 0)} €
-                  </p>
-                ))}{" "}
-              </th>
-            )}
-          </tr>
-        </tbody>
-      </table>
-      {extras.length > 0 && <strong>Extrastotal: {data.extrasTotal} € </strong>}
-      <br />
-      <strong>Subtotal: {data.subtotal} € </strong>
-      <hr />
-      <strong>Total: {data.total} €</strong>
-      <p>You already paid with {data.payment}</p>
+                  </td>
+                )}
+                {extras.length > 0 && (
+                  <th>
+                    {extras.map((e) => (
+                      <p key={e.name}>
+                        {e.extras.reduce((total, a) => a.price + total, 0)} €
+                      </p>
+                    ))}{" "}
+                  </th>
+                )}
+              </tr>
+            </tbody>
+          </table>
+          {extras.length > 0 && (
+            <strong>Extrastotal: {data.extrasTotal} € </strong>
+          )}
+          <br />
+          <strong>Subtotal: {data.subtotal} € </strong>
+          <hr />
+          <strong>Total: {data.total} €</strong>
+          <p>You already paid with {data.payment}</p>
+        </>
+      )}
     </section>
   );
 }
