@@ -13,7 +13,7 @@ function ProductDetails() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
         <div className="row">
           <DashboardTabs />
@@ -45,9 +45,9 @@ function ProductDetails() {
   }
 
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
         <ProductUpdateForm product={data} onSubmit={handleEditProduct} />
       </div>

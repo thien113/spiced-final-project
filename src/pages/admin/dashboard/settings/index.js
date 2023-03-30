@@ -10,9 +10,9 @@ function DashboardSettings() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -20,20 +20,23 @@ function DashboardSettings() {
     );
   }
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <h3>Settings</h3>
-        {data.map((d) => (
-          <>
-            <p>Name: {d.name}</p>
-            <p>Telephone: {d.telephone}</p>
-            <p>Adress: {d.adress}</p>
-            <p>Email: {d.email}</p>
-            <p>Owner: {d.owner}</p>
-          </>
-        ))}
+        <div className="dashboard-column">
+          <h3>Settings</h3>
+
+          {data.map((d) => (
+            <div className="dashboard-row">
+              <p>Name: {d.name}</p>
+              <p>Telephone: {d.telephone}</p>
+              <p>Adress: {d.adress}</p>
+              <p>Email: {d.email}</p>
+              <p>Owner: {d.owner}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

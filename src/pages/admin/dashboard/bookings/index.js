@@ -15,7 +15,7 @@ function DashboardBookings() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
         <div className="row">
           <DashboardTabs />
@@ -30,11 +30,11 @@ function DashboardBookings() {
   );
 
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
+        <div className="dashboard-column">
           <h3>Bookings</h3>
           <DatePicker
             selected={startDate}
@@ -43,7 +43,7 @@ function DashboardBookings() {
 
           {filteredData.map((d) => (
             <>
-              <div className="row">
+              <div className="dashboard-row">
                 <h4>Date: {d.date}</h4>
                 <p>Name: {d.name}</p>
                 <p>Email: {d.email}</p>

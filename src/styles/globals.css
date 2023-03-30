@@ -290,3 +290,41 @@ Map
 .width-100 {
   width: 100%;
 }
+/*
+Admin Dashboard
+*/
+.admin-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.admin-section {
+  background-color: white;
+  padding: 20px;
+}
+.admin-row {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.dashboard-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.dashboard-column {
+  display: flex;
+  flex-direction: column;
+}
+.tabs-tab {
+  background-color: var(--blue);
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+}
+.tabs-tab:active {
+  color: white;
+}
+.tabs-tab:hover {
+  box-shadow: 10px 5px 5px #00d2e1;
+}

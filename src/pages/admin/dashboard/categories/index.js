@@ -16,7 +16,7 @@ function DashboardCategories() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
         <div className="row">
           <DashboardTabs />
@@ -56,11 +56,11 @@ function DashboardCategories() {
     }
   }
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
+        <div className="dashboard-column">
           <h3>Categories</h3>
           <button
             onClick={() => {
@@ -72,7 +72,7 @@ function DashboardCategories() {
           {open && <CategoryCreateForm onSubmit={handleCreateCategory} />}
           {data.map((d) => (
             <>
-              <div className="row">
+              <div className="dashboard-row">
                 <h4>Category: {d.name}</h4>
               </div>
               <Link href={`/admin/dashboard/categories/${d._id}`}>

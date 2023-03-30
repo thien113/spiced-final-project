@@ -16,9 +16,9 @@ function DashboardOrders() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -30,11 +30,11 @@ function DashboardOrders() {
     (d) => d.created.slice(0, 10) === dateToFilter
   );
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
+        <div className="dashboard-column">
           <h3>Orders</h3>
           <DatePicker
             selected={startDate}
@@ -42,7 +42,7 @@ function DashboardOrders() {
           />
           {filteredData.map((d) => (
             <Link href={`/admin/dashboard/orders/${d._id}`}>
-              <div className="row">
+              <div className="dashboard-row">
                 <h4>Order Number: {d._id}</h4>
                 <strong>For: {d.type.toUpperCase()}</strong>
                 <p>Name: {d.name}</p>

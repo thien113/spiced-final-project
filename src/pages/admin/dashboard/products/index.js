@@ -16,7 +16,7 @@ function DashboardProducts() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
         <div className="row">
           <DashboardTabs />
@@ -55,11 +55,11 @@ function DashboardProducts() {
     }
   }
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
+        <div className="dashboard-column">
           <h3>Products</h3>
           <button
             onClick={() => {
@@ -77,7 +77,7 @@ function DashboardProducts() {
                 <strong>Price: {d.price}€</strong>
                 <p>Category: {d.category} </p>
               </div>
-              <div className="row">
+              <div className="dashboard-row">
                 {d.extras.map((e) => (
                   <h6>
                     {e.extra}: {e.price} €

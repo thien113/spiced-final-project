@@ -9,15 +9,15 @@ import OrderOnTheWay from "@/src/components/admin/order/OrderOnTheWay";
 
 function Dashboard() {
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
+        <div className="dashboard-column">
           <DeliveryOrder />
           <PickUpOrder />
           <Booking />
-          <div className="row">
+          <div className="dashboard-row">
             <OrderInKitchen />
             <OrderOnTheWay />
           </div>

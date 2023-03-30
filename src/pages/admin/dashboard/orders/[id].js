@@ -12,9 +12,9 @@ function OrderDetails() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -23,9 +23,9 @@ function OrderDetails() {
   }
 
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
       </div>
     </section>

@@ -7,7 +7,7 @@ export default function AdminLayout() {
   }
   return (
     <>
-      <div className="row">
+      <div className="admin-header">
         <h2>Dashboard</h2>
         <button onClick={toggleOpening}>
           {!opening ? <p>Open</p> : <p>Close</p>}

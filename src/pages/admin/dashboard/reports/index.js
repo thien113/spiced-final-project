@@ -5,11 +5,11 @@ import Chart from "@/src/components/admin/Chart";
 
 function DashboardReports() {
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
+        <div className="dashboard-column">
           <h3>Reports</h3>
           <Chart />
         </div>

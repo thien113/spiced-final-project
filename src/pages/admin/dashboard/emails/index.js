@@ -10,9 +10,9 @@ function DashboardEmails() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -20,16 +20,16 @@ function DashboardEmails() {
     );
   }
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
+        <div className="dashboard-column">
           <h3>Customer Emails</h3>
 
           {data.map((d) => (
             <>
-              <div className="row">
+              <div className="dashboard-row">
                 <p>Name: {d.name}</p>
                 <p>Email: {d.email}</p>
               </div>

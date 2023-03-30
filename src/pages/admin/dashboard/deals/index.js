@@ -16,9 +16,9 @@ function DashboardDeals() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -56,11 +56,11 @@ function DashboardDeals() {
     }
   }
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
+        <div className="dashboard-column">
           <h3>Deals</h3>
           <button
             onClick={() => {
@@ -72,7 +72,7 @@ function DashboardDeals() {
           {open && <DealCreateForm onSubmit={handleCreateDeal} />}
           {data.map((d) => (
             <>
-              <div className="row">
+              <div className="dashboard-row">
                 <h4>Deals: {d.code}</h4>
                 <p>Discount: {d.discount}</p>
                 <p>

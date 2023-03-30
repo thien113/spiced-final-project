@@ -13,9 +13,9 @@ function DealDetails() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -45,9 +45,9 @@ function DealDetails() {
   }
 
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
         <DealUpdateForm deal={data} onSubmit={handleEditDeal} />
       </div>

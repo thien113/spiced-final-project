@@ -11,9 +11,9 @@ function DashboardReviews() {
 
   if (isLoading) {
     return (
-      <section className="page-section">
+      <section className="admin-section">
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -22,15 +22,15 @@ function DashboardReviews() {
   }
 
   return (
-    <section className="page-section">
+    <section className="admin-section">
       <AdminLayout />
-      <div className="row">
+      <div className="admin-row">
         <DashboardTabs />
         <div className="column">
           <h3>Reviews</h3>
           {data.map((d) => (
             <>
-              <div className="row">
+              <div className="dashboard-row">
                 <h4>Order#: {d.orderNumber}</h4>
                 <p>Name: {d.name}</p>
                 <p>Comment: {d.comment}</p>

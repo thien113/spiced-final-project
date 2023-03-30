@@ -22,7 +22,7 @@ export default function ReviewUpdateForm() {
   return (
     <section>
       <form onSubmit={handleSubmit}>
-        <fieldset>
+        <fieldset className="dashboard-row">
           <legend>
             {" "}
             <h4> Show Review</h4>
