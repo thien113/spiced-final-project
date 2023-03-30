@@ -7,6 +7,7 @@ const restaurantSchema = new Schema({
   telephone: { type: Number },
   email: { type: String },
   owner: { type: String },
+  rating: { type: Number },
 });
 
 const Restaurant =

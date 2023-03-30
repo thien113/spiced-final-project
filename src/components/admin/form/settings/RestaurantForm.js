@@ -1,11 +1,7 @@
-import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import AdminLayout from "@/src/components/admin/Layout";
-import { hasToken } from "../../checkUser";
 import useSWR from "swr";
 
-function DashboardReviews() {
-  const { data, isLoading } = useSWR("/api/reviews");
-
+function Restaurant() {
+  const { data, isLoading } = useSWR("/api/settings");
   if (!data) return;
 
   if (isLoading) {
@@ -42,7 +38,7 @@ function DashboardReviews() {
     </section>
   );
 }
-export default DashboardReviews;
+export default Restaurant;
 export async function getServerSideProps(context) {
   const token = await hasToken(context.req);
 

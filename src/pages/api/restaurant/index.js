@@ -1,14 +1,14 @@
 import dbConnect from "../../../db/connect";
-import Review from "../../../db/models/Review";
+import Restaurant from "../../../db/models/Restaurant";
 
 export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
-    const reviews = await Review.find();
-    return response.status(200).json(reviews);
+    const restaurant = await Restaurant.find();
+    return response.status(200).json(restaurant);
   }
-  if (request.method === "POST") {
+  /*if (request.method === "POST") {
     try {
       const reviewData = request.body;
       const review = new Review(reviewData);
@@ -18,5 +18,5 @@ export default async function handler(request, response) {
       console.error(error);
       return response.status(400).json({ error: error.message });
     }
-  }
+  }*/
 }

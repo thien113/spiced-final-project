@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Info() {
+export default function Info({ restaurant }) {
   return (
     <section className="info">
       <Image
@@ -19,8 +19,12 @@ export default function Info() {
 
       <div>
         <p>Mo-Sun: 11:00 - 20:00</p>
-        <p>Telephone: 01234567890</p>
-        <p>Ritterstraße 12-14, 10969 Berlin</p>
+        {restaurant.map((r) => (
+          <>
+            <p>Telephone: {r.telephone}</p>
+            <p>{r.adress}</p>
+          </>
+        ))}
       </div>
     </section>
   );
