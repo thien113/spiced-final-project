@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import ProductCreateForm from "@/src/components/admin/form/product/ProductCreateForm";
-import { hasToken } from "../../checkUser";
+import { hasToken } from "../../../../components/admin/utils/checkUser";
 
 function DashboardProducts() {
   const router = useRouter();

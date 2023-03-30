@@ -5,7 +5,7 @@ import DealCreateForm from "@/src/components/admin/form/deal/DealCreateForm";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { hasToken } from "../../checkUser";
+import { hasToken } from "../../../../components/admin/utils/checkUser";
 
 function DashboardDeals() {
   const { data, isLoading } = useSWR("/api/deals");

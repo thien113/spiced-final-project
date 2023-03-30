@@ -2,7 +2,7 @@ import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import AdminLayout from "../../../../components/admin/Layout";
 import useSWR from "swr";
 import Link from "next/link";
-import { hasToken } from "../../checkUser";
+import { hasToken } from "../../../../components/admin/utils/checkUser";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useState } from "react";

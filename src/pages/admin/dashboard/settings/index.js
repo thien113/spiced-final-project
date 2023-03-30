@@ -1,6 +1,6 @@
 import AdminLayout from "../../../../components/admin/Layout";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import { hasToken } from "../../checkUser";
+import { hasToken } from "../../../../components/admin/utils/checkUser";
 import useSWR from "swr";
 
 function DashboardSettings() {

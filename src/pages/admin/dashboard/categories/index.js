@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import CategoryCreateForm from "@/src/components/admin/form/category/CategoryCreateForm";
-import { hasToken } from "../../checkUser";
+import { hasToken } from "../../../../components/admin/utils/checkUser";
 
 function DashboardCategories() {
   const router = useRouter();

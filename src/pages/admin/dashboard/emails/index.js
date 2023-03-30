@@ -1,7 +1,7 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import AdminLayout from "../../../../components/admin/Layout";
 import useSWR from "swr";
-import { hasToken } from "../../checkUser";
+import { hasToken } from "../../../../components/admin/utils/checkUser";
 
 function DashboardEmails() {
   const { data, isLoading } = useSWR("/api/emails");

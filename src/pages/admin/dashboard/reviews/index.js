@@ -1,6 +1,6 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import AdminLayout from "../../../../components/admin/Layout";
-import { hasToken } from "../../checkUser";
+import { hasToken } from "../../../../components/admin/utils/checkUser";
 import useSWR from "swr";
 import ReviewUpdateForm from "@/src/components/admin/form/review/ReviewUpdateForm";
 

@@ -1,6 +1,6 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import AdminLayout from "@/src/components/admin/Layout";
-import { hasToken } from "../checkUser";
+import { hasToken } from "../../../components/admin/utils/checkUser";
 import DeliveryOrder from "@/src/components/admin/order/DeliveryOrder";
 import Booking from "@/src/components/admin/order/Booking";
 import PickUpOrder from "@/src/components/admin/order/PickUpOrder";

@@ -2,7 +2,7 @@ import AdminLayout from "../../../../components/admin/Layout";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import { useRouter } from "next/router";
 import useSWR from "swr";
-import { hasToken } from "../../checkUser";
+import { hasToken } from "../../../../components/admin/utils/checkUser";
 
 function OrderDetails() {
   const router = useRouter();
