@@ -1,5 +1,5 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import AdminLayout from "@/src/components/admin/Layout";
+import AdminLayout from "../../../../components/admin/Layout";
 import useSWR from "swr";
 import Link from "next/link";
 import { hasToken } from "../../checkUser";

@@ -1,5 +1,5 @@
 import CategoryUpdateForm from "@/src/components/admin/form/category/CategoryUpdateForm";
-import AdminLayout from "@/src/components/admin/Layout";
+import AdminLayout from "../../../../components/admin/Layout";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import { useRouter } from "next/router";
 import useSWR from "swr";
