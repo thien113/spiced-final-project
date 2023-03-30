@@ -1,4 +1,4 @@
-import AdminLayout from "../../../../components/admin/Layoutx";
+import AdminLayout from "../../../../components/admin/Layout";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import { hasToken } from "../../checkUser";
 import useSWR from "swr";

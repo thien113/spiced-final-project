@@ -1,5 +1,5 @@
 import ProductUpdateForm from "@/src/components/admin/form/product/ProductUpdateForm";
-import AdminLayout from "../../../../components/admin/Layoutx";
+import AdminLayout from "../../../../components/admin/Layout";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import { useRouter } from "next/router";
 import useSWR from "swr";

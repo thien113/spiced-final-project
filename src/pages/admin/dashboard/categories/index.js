@@ -1,5 +1,5 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import AdminLayout from "../../../../components/admin/Layoutx";
+import AdminLayout from "../../../../components/admin/Layout";
 import useSWR from "swr";
 import { useState } from "react";
 import { useRouter } from "next/router";
