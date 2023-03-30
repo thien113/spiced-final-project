@@ -8,15 +8,16 @@ export default async function handler(request, response) {
     const restaurant = await Restaurant.find();
     return response.status(200).json(restaurant);
   }
-  /*if (request.method === "POST") {
+  if (request.method === "PUT") {
+    const restaurantId = await Restaurant.find();
     try {
-      const reviewData = request.body;
-      const review = new Review(reviewData);
-      await review.save();
-      return response.status(201).json({ status: "Review created." });
+      await Restaurant.findByIdAndUpdate(restaurantId, {
+        $set: { rating: request.body },
+      });
+      response.status(200).json({ status: "Restaurant successfully updated" });
     } catch (error) {
-      console.error(error);
-      return response.status(400).json({ error: error.message });
+      console.log(error);
+      response.status(400).json({ error: error.message });
     }
-  }*/
+  }
 }

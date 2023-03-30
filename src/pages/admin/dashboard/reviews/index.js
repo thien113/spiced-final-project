@@ -2,6 +2,7 @@ import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import AdminLayout from "@/src/components/admin/Layout";
 import { hasToken } from "../../checkUser";
 import useSWR from "swr";
+import ReviewUpdateForm from "@/src/components/admin/form/review/ReviewUpdateForm";
 
 function DashboardReviews() {
   const { data, isLoading } = useSWR("/api/reviews");
@@ -37,6 +38,7 @@ function DashboardReviews() {
               </div>
             </>
           ))}
+          <ReviewUpdateForm />
         </div>
       </div>
     </section>
