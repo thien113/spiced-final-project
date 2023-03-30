@@ -11,10 +11,10 @@ export default function CheckoutForm({
   extrasTotal,
   total,
   subtotal,
+  discount,
 }) {
   const router = useRouter();
   const [payment, setPayment] = useState("");
-  console.log("checkoutform extras", extras);
   async function addOrder(event) {
     event.preventDefault();
 
@@ -29,6 +29,7 @@ export default function CheckoutForm({
       extrasTotal: extrasTotal,
       extras: [...extras],
       status: "new",
+      discount: discount || 1,
     };
     const response = await fetch("/api/orders", {
       method: "POST",
@@ -73,7 +74,7 @@ export default function CheckoutForm({
             <div className="row">
               <p>{p.counter}</p>
               <p>{p.name}</p>
-              <p>Subtotal: {p.price * p.counter} €</p>
+              <p>Subtotal: {p.price * p.counter - discount / 100} €</p>
             </div>
             {extras.length > 0 && (
               <ul className="column">
@@ -109,10 +110,11 @@ export default function CheckoutForm({
         </div>
       </div>
       <div className="total-text">
-        <p>Subtotal: {subtotal} €</p>
+        <p>Subtotal: {subtotal - discount / 100} €</p>
         <p>Extrastotal: {extrasTotal} €</p>
+        {discount != 0 && <p>Discount {discount} %</p>}
         <hr />
-        <h3>Total: {total} €</h3>
+        <h3>Total: {total - discount / 100} €</h3>
       </div>
       {payment && <button>Order</button>}
     </form>

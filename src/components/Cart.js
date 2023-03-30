@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import DiscountForm from "./forms/DiscountForm";
 
 export default function Cart({ products, close, productHandler }) {
   const [checkedValue, setChecktedValue] = useState("");
@@ -7,6 +8,7 @@ export default function Cart({ products, close, productHandler }) {
   const [extras, setExtra] = useState([]);
   const [extrasTotalPrice, setExtrasTotalPrice] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
   const [total, setTotal] = useState(0);
 
   useEffect(
@@ -92,6 +94,7 @@ export default function Cart({ products, close, productHandler }) {
     );
     sessionStorage.setItem("subtotal", JSON.stringify(subtotal));
     sessionStorage.setItem("total", JSON.stringify(total));
+    sessionStorage.setItem("discount", JSON.stringify(discount));
   }
 
   function sumExtrasTotalPrice() {
@@ -186,8 +189,9 @@ export default function Cart({ products, close, productHandler }) {
                 €
               </h4>
             </div>
+            <DiscountForm setDiscount={setDiscount} discount={discount} />
             <div className="row">
-              <h3 className="total-text">Total: {total}€</h3>
+              <h3 className="total-text">Total: {total - discount / 100}€</h3>
               <nav>
                 <Link href="/checkout">
                   {checkedValue && (

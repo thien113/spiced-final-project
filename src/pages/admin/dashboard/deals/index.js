@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { hasToken } from "../../checkUser";
+import { DateFormatterFromMongoose } from "@/src/components/admin/utils/dateformatter";
 
 function DashboardDeals() {
   const { data, isLoading } = useSWR("/api/deals");
@@ -76,7 +77,8 @@ function DashboardDeals() {
                 <h4>Deals: {d.code}</h4>
                 <p>Discount: {d.discount}</p>
                 <p>
-                  Start: {d.start}- {d.end}
+                  Start: {DateFormatterFromMongoose(d.start)}
+                  <strong>-</strong> {DateFormatterFromMongoose(d.end)}
                 </p>
               </div>
               <Link href={`/admin/dashboard/deals/${d._id}`}>

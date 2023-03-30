@@ -8,6 +8,7 @@ export default function Checkout() {
   const [extrasTotal, setExtrasTotal] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const [discount, setDiscount] = useState(0);
 
   useEffect(() => {
     const productsArray = sessionStorage.getItem("products") || [];
@@ -28,9 +29,11 @@ export default function Checkout() {
     const totalSession = sessionStorage.getItem("total") || [];
     const total = JSON.parse(totalSession);
     setTotal(total);
+    const discountSession = sessionStorage.getItem("discount") || [];
+    const discount = JSON.parse(discountSession);
+    setDiscount(discount);
   }, []);
 
-  console.log("extras after getting from session", extras);
   return (
     <section className="form-section">
       <h2>Checkout for {type.toUpperCase()}</h2>
@@ -41,6 +44,7 @@ export default function Checkout() {
         extrasTotal={extrasTotal}
         subtotal={subtotal}
         total={total}
+        discount={discount}
       />
     </section>
   );
