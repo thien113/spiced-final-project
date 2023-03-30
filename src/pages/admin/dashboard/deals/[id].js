@@ -1,5 +1,5 @@
 import DealUpdateForm from "@/src/components/admin/form/deal/DealUpdateForm";
-import AdminLayout from "../../../../components/admin/Layout";
+import AdminLayout from "../../../../components/admin/Layoutx";
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
 import { useRouter } from "next/router";
 import useSWR from "swr";
