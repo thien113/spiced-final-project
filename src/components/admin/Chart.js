@@ -26,9 +26,6 @@ export default function Chart() {
     (data) =>
       data.status === "finished" && data.created.includes(dateToFilter) === true
   );
-  console.log(dateToFilter);
-  console.log(data);
-  console.log(dataEx);
   return (
     <>
       <DatePicker
@@ -43,7 +40,7 @@ export default function Chart() {
       >
         <Line type="monotone" dataKey="total" stroke="#ff66c4" />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <XAxis dataKey="created" />
+        <XAxis dataKey="total" />
         <YAxis />
         <Tooltip />
         <Legend />
