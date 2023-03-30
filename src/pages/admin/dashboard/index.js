@@ -1,5 +1,5 @@
 import DashboardTabs from "@/src/components/admin/tabs/Tabs";
-import AdminLayout from "../../../../components/admin/Layout";
+import AdminLayout from "@/src/components/admin/Layout";
 import { hasToken } from "../checkUser";
 import DeliveryOrder from "@/src/components/admin/order/DeliveryOrder";
 import Booking from "@/src/components/admin/order/Booking";
