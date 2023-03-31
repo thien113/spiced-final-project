@@ -47,6 +47,13 @@ header {
   align-items: center;
   margin: 10px;
 }
+@media (max-width: 450px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+  }
+}
 nav > a {
   color: var(--pink);
   font-family: "prompt";
