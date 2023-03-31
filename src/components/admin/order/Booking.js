@@ -3,10 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 
 export default function Booking({ bookings }) {
-  const [startDate, setStartDate] = useState(new Date());
   const { data: bookingData, isLoading: bookingLoading } =
     useSWR("/api/bookings");
-  const { mutate } = useSWRConfig();
 
   if (!bookingData) return;
 
