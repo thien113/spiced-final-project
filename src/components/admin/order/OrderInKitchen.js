@@ -41,7 +41,7 @@ export default function OrderInKitchen() {
     }
   }
   return (
-    <article>
+    <article className="card">
       <h3>In the kitchen</h3>
       {filteredOrderData.length === 0 && <h4>No Order in Kitchen</h4>}
       {filteredOrderData.map((d) => (
@@ -67,7 +67,7 @@ export default function OrderInKitchen() {
                   ))}
               </li>
             ))}
-            <div className="row">
+            <div className="admin-row">
               <button onClick={() => changeStatus(d._id, "onTheWay")}>
                 On the way
               </button>

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function DashboardTabs() {
   return (
-    <div className="column tabs">
+    <div className="dashboard-column tabs">
       <Link className="tabs-tab" href="/admin/dashboard">
         New!!!
       </Link>

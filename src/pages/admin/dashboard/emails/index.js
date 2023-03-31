@@ -26,15 +26,16 @@ function DashboardEmails() {
         <DashboardTabs />
         <div className="dashboard-column">
           <h3>Customer Emails</h3>
-
-          {data.map((d) => (
-            <>
-              <div className="dashboard-row">
-                <p>Name: {d.name}</p>
-                <p>Email: {d.email}</p>
+          <div className="cards">
+            {data.map((d) => (
+              <div className="dashboard-column">
+                <div className="dashboard-row card">
+                  <p>Name: {d.name}</p>
+                  <p>Email: {d.email}</p>
+                </div>
               </div>
-            </>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

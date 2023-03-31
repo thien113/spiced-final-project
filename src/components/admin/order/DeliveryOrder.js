@@ -9,9 +9,9 @@ export default function DeliveryOrder() {
 
   if (orderLoading) {
     return (
-      <section className="page-section">
+      <section>
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -47,7 +47,7 @@ export default function DeliveryOrder() {
   return (
     <article>
       {filteredOrderData.map((d) => (
-        <div key={d._id}>
+        <div className="card" key={d._id}>
           <h3>New Order!!!</h3>
           <strong>For: {d.type.toUpperCase()}</strong> <br />
           <p>Name: {d.name}</p>
@@ -71,7 +71,7 @@ export default function DeliveryOrder() {
                   ))}
               </li>
             ))}
-            <div className="row">
+            <div className="dashboard-row">
               <button onClick={() => confirm(d._id, "inKitchen", "30")}>
                 30 min
               </button>

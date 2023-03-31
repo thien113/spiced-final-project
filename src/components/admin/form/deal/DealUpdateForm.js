@@ -3,7 +3,7 @@ export default function DealUpdateForm({ deal, onSubmit }) {
     onSubmit(event);
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="dashboard-column">
       <label htmlFor="code">Code:</label>
       <input type="text" name="code" placeholder={deal.code} required />
       <label htmlFor="discount">%:</label>

@@ -61,17 +61,19 @@ function DashboardDeals() {
       <div className="admin-row">
         <DashboardTabs />
         <div className="dashboard-column">
-          <h3>Deals</h3>
-          <button
-            onClick={() => {
-              setOpen(!open);
-            }}
-          >
-            Create New Deal
-          </button>
+          <div className="admin-row">
+            <h3>Deals</h3>
+            <button
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              Create New Deal
+            </button>
+          </div>
           {open && <DealCreateForm onSubmit={handleCreateDeal} />}
           {data.map((d) => (
-            <>
+            <div className="dashboard-column">
               <div className="dashboard-row">
                 <h4>Deals: {d.code}</h4>
                 <p>Discount: {d.discount}</p>
@@ -80,17 +82,19 @@ function DashboardDeals() {
                   <strong>-</strong> {d.end}
                 </p>
               </div>
-              <Link href={`/admin/dashboard/deals/${d._id}`}>
-                <button>Update</button>
-              </Link>
-              <button
-                onClick={() => {
-                  handleDelete(d._id);
-                }}
-              >
-                Delete
-              </button>
-            </>
+              <div className="dashboard-row">
+                <Link href={`/admin/dashboard/deals/${d._id}`}>
+                  <button>Update</button>
+                </Link>
+                <button
+                  onClick={() => {
+                    handleDelete(d._id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           ))}
         </div>
       </div>

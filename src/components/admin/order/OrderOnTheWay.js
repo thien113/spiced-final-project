@@ -41,7 +41,7 @@ export default function OrderOnTheWay() {
     }
   }
   return (
-    <article>
+    <article className="card">
       <h3>On The Way</h3>
       {filteredOrderData.length === 0 && <h4>No Order on the way</h4>}
       {filteredOrderData.map((d) => (
@@ -68,7 +68,7 @@ export default function OrderOnTheWay() {
                   ))}
               </li>
             ))}
-            <div className="row">
+            <div className="admin-row">
               <button onClick={() => changeStatus(d._id, "finished")}>
                 Finished
               </button>

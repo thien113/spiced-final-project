@@ -18,7 +18,7 @@ function DashboardCategories() {
     return (
       <section className="admin-section">
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -61,31 +61,33 @@ function DashboardCategories() {
       <div className="admin-row">
         <DashboardTabs />
         <div className="dashboard-column">
-          <h3>Categories</h3>
-          <button
-            onClick={() => {
-              setOpen(!open);
-            }}
-          >
-            Create New Category
-          </button>
+          <div className="admin-row">
+            <h3>Categories</h3>
+            <button
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              Create New Category
+            </button>
+          </div>
           {open && <CategoryCreateForm onSubmit={handleCreateCategory} />}
           {data.map((d) => (
-            <>
+            <div className="dashboard-row card">
+              <h4>Category: {d.name}</h4>
               <div className="dashboard-row">
-                <h4>Category: {d.name}</h4>
+                <Link href={`/admin/dashboard/categories/${d._id}`}>
+                  <button>Update</button>
+                </Link>
+                <button
+                  onClick={() => {
+                    handleDelete(d._id);
+                  }}
+                >
+                  Delete
+                </button>
               </div>
-              <Link href={`/admin/dashboard/categories/${d._id}`}>
-                <button>Update</button>
-              </Link>
-              <button
-                onClick={() => {
-                  handleDelete(d._id);
-                }}
-              >
-                Delete
-              </button>
-            </>
+            </div>
           ))}
         </div>
       </div>

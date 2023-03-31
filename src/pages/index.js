@@ -89,6 +89,7 @@ export default function Home() {
           <button className="cover-button">Get delivery</button>
         </div>
       </div>
+      <h4>What our customers think about us</h4>
       <Ratings restaurant={data} />
       <EmailForm onSubmit={handleAddEmailSubscriber} />
       <Benefits />

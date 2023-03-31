@@ -8,17 +8,21 @@ export default function Ratings({ restaurant }) {
     return <h4>Loading...</h4>;
   }
   const filteredData = data.filter((e) => e.rating >= restaurant[0].rating);
-  console.log("fitlered data of ratings", filteredData);
   return (
-    <>
-      <h4>What our customers think about us</h4>
-      {filteredData.map((d) => (
-        <>
-          <p>{d.name}</p>
-          <p>{d.comment}</p>
-          <p>{d.rating}/5</p>
-        </>
-      ))}
-    </>
+    <div className="slider">
+      <div className="slide-track">
+        {filteredData.map((d) => (
+          <div className=" slide">
+            <div>
+              <h4>{d.name}</h4>
+              <i>{d.comment}</i>
+              <p>
+                <strong>{d.rating}/5</strong>
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

@@ -35,21 +35,26 @@ function DashboardOrders() {
       <div className="admin-row">
         <DashboardTabs />
         <div className="dashboard-column">
-          <h3>Orders</h3>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-          {filteredData.map((d) => (
-            <Link href={`/admin/dashboard/orders/${d._id}`}>
-              <div className="dashboard-row">
-                <h4>Order Number: {d._id}</h4>
-                <strong>For: {d.type.toUpperCase()}</strong>
-                <p>Name: {d.name}</p>
-                <strong>Total: {d.total} €</strong>
-              </div>
-            </Link>
-          ))}
+          <div className="dashboard-row">
+            <h3>Orders</h3>
+            <DatePicker
+              className="datepicker"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
+          <div className="cards">
+            {filteredData.map((d) => (
+              <Link href={`/admin/dashboard/orders/${d._id}`}>
+                <div className="dashboard-row card">
+                  <h4>Order Number: {d._id}</h4>
+                  <strong>For: {d.type.toUpperCase()}</strong>
+                  <p>Name: {d.name}</p>
+                  <strong>Total: {d.total} €</strong>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

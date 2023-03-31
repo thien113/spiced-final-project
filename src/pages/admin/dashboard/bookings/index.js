@@ -35,23 +35,25 @@ function DashboardBookings() {
       <div className="admin-row">
         <DashboardTabs />
         <div className="dashboard-column">
-          <h3>Bookings</h3>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
-
-          {filteredData.map((d) => (
-            <>
-              <div className="dashboard-row">
+          <div className="dashboard-row">
+            <h3>Bookings</h3>
+            <DatePicker
+              className="datepicker"
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
+          <div className="cards">
+            {filteredData.map((d) => (
+              <div className="dashboard-row card">
                 <h4>Date: {d.date}</h4>
                 <p>Name: {d.name}</p>
                 <p>Email: {d.email}</p>
                 <p>Telephone: # {d.telephone}</p>
                 <p>People: # {d.people}</p>
               </div>
-            </>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

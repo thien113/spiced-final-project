@@ -14,9 +14,12 @@ function Dashboard() {
       <div className="admin-row">
         <DashboardTabs />
         <div className="dashboard-column">
-          <DeliveryOrder />
-          <PickUpOrder />
-          <Booking />
+          <div className="cards">
+            <DeliveryOrder />
+            <PickUpOrder />
+            <Booking />
+          </div>
+          <hr />
           <div className="dashboard-row">
             <OrderInKitchen />
             <OrderOnTheWay />

@@ -11,9 +11,9 @@ export default function Booking({ bookings }) {
 
   if (bookingLoading) {
     return (
-      <section className="page-section">
+      <section>
         <AdminLayout />
-        <div className="row">
+        <div className="admin-row">
           <DashboardTabs />
           <h2>Loading...</h2>
         </div>
@@ -40,9 +40,9 @@ export default function Booking({ bookings }) {
   }
 
   return (
-    <>
+    <article>
       {filteredBookingData.map((b) => (
-        <div key={b._id}>
+        <div className="card" key={b._id}>
           <h3>New Booking!</h3>
           <p>Name: {b.name}</p>
           <p>Date: {b.date}</p>
@@ -57,6 +57,6 @@ export default function Booking({ bookings }) {
           </div>
         </div>
       ))}
-    </>
+    </article>
   );
 }

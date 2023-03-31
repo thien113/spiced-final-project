@@ -47,7 +47,7 @@ export default function PickUpOrder() {
   return (
     <article>
       {filteredOrderData.map((d) => (
-        <div key={d._id}>
+        <div className="card" key={d._id}>
           <h3>New Order!!!</h3>
           <strong>For: {d.type.toUpperCase()}</strong> <br />
           <p>Name: {d.name}</p>
@@ -70,7 +70,7 @@ export default function PickUpOrder() {
                   ))}
               </li>
             ))}
-            <div className="row">
+            <div className="dashboard-row">
               <button onClick={() => confirm(d._id, "inKitchen", "10")}>
                 10 min
               </button>

@@ -28,7 +28,7 @@ function DashboardSettings() {
           <h3>Settings</h3>
 
           {data.map((d) => (
-            <div className="dashboard-row">
+            <div className="dashboard-column">
               <p>Name: {d.name}</p>
               <p>Telephone: {d.telephone}</p>
               <p>Adress: {d.adress}</p>

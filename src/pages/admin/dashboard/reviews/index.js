@@ -26,19 +26,23 @@ function DashboardReviews() {
       <AdminLayout />
       <div className="admin-row">
         <DashboardTabs />
-        <div className="column">
-          <h3>Reviews</h3>
-          {data.map((d) => (
-            <>
-              <div className="dashboard-row">
-                <h4>Order#: {d.orderNumber}</h4>
-                <p>Name: {d.name}</p>
-                <p>Comment: {d.comment}</p>
-                <p>Rating: # {d.rating} /5</p>
+        <div className="dashboard-column">
+          <div className="dashboard-row">
+            <h3>Reviews</h3>
+            <ReviewUpdateForm />
+          </div>
+          <div className="cards">
+            {data.map((d) => (
+              <div className="dashboard-column card">
+                <div className="dashboard-row">
+                  <h4>Order#: {d.orderNumber}</h4>
+                  <p>Name: {d.name}</p>
+                  <p>Comment: {d.comment}</p>
+                  <p>Rating: # {d.rating} /5</p>
+                </div>
               </div>
-            </>
-          ))}
-          <ReviewUpdateForm />
+            ))}
+          </div>
         </div>
       </div>
     </section>

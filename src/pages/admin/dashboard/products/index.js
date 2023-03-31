@@ -60,42 +60,48 @@ function DashboardProducts() {
       <div className="admin-row">
         <DashboardTabs />
         <div className="dashboard-column">
-          <h3>Products</h3>
-          <button
-            onClick={() => {
-              setOpen(!open);
-            }}
-          >
-            Create New Product
-          </button>
+          <div className="admin-row">
+            <h3>Products</h3>
+            <button
+              onClick={() => {
+                setOpen(!open);
+              }}
+            >
+              Create New Product
+            </button>
+          </div>
           {open && <ProductCreateForm onSubmit={handleCreateProduct} />}
-          {data.map((d) => (
-            <>
-              <div className="row">
+          <div className="cards">
+            {data.map((d) => (
+              <div className="dashboard-colum card">
                 <h4>{d.name}</h4>
-                <p>Description: {d.description}</p>
-                <strong>Price: {d.price}€</strong>
-                <p>Category: {d.category} </p>
+                <div className="dashboard-row">
+                  <p>Description: {d.description}</p>
+                  <strong>Price: {d.price}€</strong>
+                  <p>Category: {d.category} </p>
+                </div>
+                <div className="dashboard-row">
+                  {d.extras.map((e) => (
+                    <h6>
+                      {e.extra}: {e.price} €
+                    </h6>
+                  ))}
+                  <div className="dashboard-row">
+                    <Link href={`/admin/dashboard/products/${d._id}`}>
+                      <button>Update</button>
+                    </Link>
+                    <button
+                      onClick={() => {
+                        handleDelete(d._id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
               </div>
-              <div className="dashboard-row">
-                {d.extras.map((e) => (
-                  <h6>
-                    {e.extra}: {e.price} €
-                  </h6>
-                ))}
-                <Link href={`/admin/dashboard/products/${d._id}`}>
-                  <button>Update</button>
-                </Link>
-                <button
-                  onClick={() => {
-                    handleDelete(d._id);
-                  }}
-                >
-                  Delete
-                </button>
-              </div>
-            </>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
