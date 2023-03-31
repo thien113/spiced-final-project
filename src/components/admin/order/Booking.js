@@ -1,5 +1,6 @@
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Booking({ bookings }) {
   const [startDate, setStartDate] = useState(new Date());
@@ -32,7 +33,7 @@ export default function Booking({ bookings }) {
         },
       });
       if (response.ok) {
-        mutate(`/api/bookings/${id}`);
+        router.push("/admin/dashboard");
       }
     } catch (error) {
       console.log(error);

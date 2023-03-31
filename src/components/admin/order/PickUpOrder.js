@@ -1,10 +1,12 @@
 import useSWR from "swr";
 import { useState } from "react";
 import DateFormatter from "@/src/components/admin/utils/dateformatter";
+import { useRouter } from "next/router";
 
 export default function PickUpOrder() {
   const { data: orderData, isLoading: orderLoading } = useSWR("/api/orders");
   const [startDate, setStartDate] = useState(new Date());
+  const router = useRouter();
   if (!orderData) return;
 
   if (orderLoading) {
@@ -39,6 +41,7 @@ export default function PickUpOrder() {
         },
       });
       if (response.ok) {
+        router.push("/admin/dashboard");
       }
     } catch (error) {
       console.log(error);
